@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.initial {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem; /* Size of the initial letter */
+  float: left;
+  line-height: 1; /* Adjust line height to align the initial letter with the text */
+  margin-right: 0.25rem; /* Space between the initial letter and the text */
+}
+
+/* You can add a class for the parchment background if it's not in your Tailwind config */
+.bg-parchment {
+  background-color: #f4e9d8;
+}
+
+/* Ensure the font-serif class uses the 'EB Garamond' font */
+.font-serif {
+  font-family: 'EB Garamond', serif;
+}
