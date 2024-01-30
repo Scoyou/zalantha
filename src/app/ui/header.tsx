@@ -5,7 +5,7 @@ export const Header = () => {
                 <div className="flex items-center justify-center h-full w-full bg-gray-900 bg-opacity-50">
                     <div className="text-center">
                         <h1 className="text-white text-2xl font-semibold uppercase md:text-3xl">Knights of Zalanthia</h1>
-                        <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Get Started</button>
+                        <button className="mt-4 px-4 py-2 bg-slate-800 text-amber-100 hover:text-amber-600 text-sm uppercase font-medium rounded focus:shadow-outline">Get Started</button>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,9 @@
 import { Header } from './ui/header'
 import Card from './ui/card'
-import { NavBar } from './ui/navbar';
 export default function Home() {
   return (
     <main>
       <div className="bg-gray-200">
-        <NavBar />
         <Header />
         <div className="mx-auto my-4 border w-3/4 -mt-16 bg-white">
           <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-4">
