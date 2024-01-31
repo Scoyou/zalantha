@@ -1,5 +1,5 @@
-import { Header } from './ui/header'
-import Card from './ui/card'
+import { Header } from "./ui/header";
+import Card from "./ui/card";
 
 export default function Home() {
   return (
@@ -12,9 +12,10 @@ export default function Home() {
               <Card
                 imageUrl="https://cdn.midjourney.com/3036210f-ed9c-4ec5-a504-c32d08486081/0_3.webp"
                 title="Rules"
-                subText='The rules of the game are as follows...'
+                subText="The rules of the game are as follows..."
                 buttonText="Read More"
-                buttonHref='/rules' />
+                buttonHref="/rules"
+              />
             </div>
             <div className="w-full md:w-auto">
               <Card
@@ -22,7 +23,8 @@ export default function Home() {
                 title="History"
                 subText="This is the creation story of the world in which our LARPing adventure takes place..."
                 buttonText="Read More"
-                buttonHref='/history' />
+                buttonHref="/history"
+              />
             </div>
             <div className="w-full md:w-auto">
               <Card
@@ -30,13 +32,17 @@ export default function Home() {
                 title="Factions"
                 subText="The Races and factions that populate the realm of Zalanthia..."
                 buttonText="Read More"
-                buttonHref='/factions' />
+                buttonHref="/factions"
+              />
             </div>
           </div>
         </div>
         <div className="items-center text-center">
           <h1 className="text-lg font-bold">About Us</h1>
-          <p>We are a high-fantasy Live Action Role Play (LARP) game based in Davis County, Utah</p>
+          <p>
+            We are a high-fantasy Live Action Role Play (LARP) game based in
+            Davis County, Utah
+          </p>
         </div>
       </div>
     </main>
