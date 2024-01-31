@@ -30,7 +30,7 @@ export default function Home() {
               <Card
                 imageUrl="https://cdn.midjourney.com/83f3b9f2-00e3-4146-a58f-5d259a167f8f/0_3.webp"
                 title="Factions"
-                subText="The Races and factions that populate the realm of Zalanthia..."
+                subText="The Races and factions that populate the realm of Zalantha..."
                 buttonText="Read More"
                 buttonHref="/factions"
               />
