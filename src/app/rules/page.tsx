@@ -11,7 +11,7 @@ export default function Rules() {
         Rules to LARP By: This LARP uses a point-based system. Each player
         starts with 5 HP at Level 1. With each level gained, players receive an
         additional 2 HP, up to a maximum of Level 12 with 24 HP. Players level
-        up at least once after each event. Here's how the point system works:
+        up at least once after each event. Here&apos;s how the point system works:
         each limb hit counts as one point, while a chest hit counts as two
         points. Intentional head hits are strictly prohibited; doing so will
         result in disqualification and prevent leveling up from the event. Only
@@ -25,7 +25,7 @@ export default function Rules() {
         failure. Spellcasting rules are as follows: At Level 1, players receive
         one spell, which can be used once per game. With each level-up, players
         can either acquire an additional spell or increase their existing
-        spell's level. As a spell's level increases, its Difficulty Rating (DR)
+        spell&apos;s level. As a spell&apos;s level increases, its Difficulty Rating (DR)
         goes up by 2. This version maintains the essence of your rules while
         enhancing readability and organization, making it easier for players to
         understand and follow.
