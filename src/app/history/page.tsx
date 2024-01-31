@@ -4,7 +4,7 @@ export default function History() {
       className="w-full bg-cover bg-center bg-parchment min-h-screen bg-opacity-80"
       style={{
         backgroundImage:
-          "url(https://cdn.midjourney.com/10a73af8-0226-486f-9cc7-3d21f094d016/0_3.webp)",
+          "url(https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_background.webp)",
         backgroundSize: "cover",
       }}
     >
@@ -19,22 +19,22 @@ export default function History() {
             Titans, embroiled in conflict, tried to identify the culprit, but
             none suspected Heloks—at first. Tragedy struck again when Heloks
             killed Oranus, the sun Titan. The blood of the fallen Titan birthed
-            one of the suns overhead. Oranus&apos; wife, Skantiva, succumbed to a
-            broken heart, her demise giving rise to the red sun in the east.
-            Eventually, Heloks&apos; treachery was uncovered, although he had already
-            garnered a following among some Titans. In response, the heroic
-            Titan Probux rallied the remaining Titans to oppose Heloks and his
-            allies. They chose the newly-formed world as their battlefield,
-            deeming it vast enough for their epic struggle. Over thousands of
-            years, their battles raged, shaping the lands and mountains upon
-            which we now tread. The conflict culminated in a fierce duel between
-            Probux and Heloks. Their battle was intense, but ultimately, it
-            ended in a draw. With his remaining strength, Probux imprisoned
-            Heloks in a fortress at the world&apos;s heart. Wounded and weakened,
-            Probux retreated beyond the world, where he eventually succumbed to
-            his injuries. His blood transformed him into the moon, eternally
-            circling the earth. Some believe Heloks perished long ago, but that,
-            as they say, is a story for another time.
+            one of the suns overhead. Oranus&apos; wife, Skantiva, succumbed to
+            a broken heart, her demise giving rise to the red sun in the east.
+            Eventually, Heloks&apos; treachery was uncovered, although he had
+            already garnered a following among some Titans. In response, the
+            heroic Titan Probux rallied the remaining Titans to oppose Heloks
+            and his allies. They chose the newly-formed world as their
+            battlefield, deeming it vast enough for their epic struggle. Over
+            thousands of years, their battles raged, shaping the lands and
+            mountains upon which we now tread. The conflict culminated in a
+            fierce duel between Probux and Heloks. Their battle was intense, but
+            ultimately, it ended in a draw. With his remaining strength, Probux
+            imprisoned Heloks in a fortress at the world&apos;s heart. Wounded
+            and weakened, Probux retreated beyond the world, where he eventually
+            succumbed to his injuries. His blood transformed him into the moon,
+            eternally circling the earth. Some believe Heloks perished long ago,
+            but that, as they say, is a story for another time.
           </p>
           <p>
             This is how you fit into the world: Zalantha is a young, burgeoning

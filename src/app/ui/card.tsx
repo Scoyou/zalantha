@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Card = ({
   imageUrl,
@@ -15,7 +16,13 @@ const Card = ({
 }) => {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-amber-100 border border-amber-600 p-4 m-4">
-      <img className="w-full" src={imageUrl} alt="Card" />
+      <Image
+        className="w-full"
+        src={imageUrl}
+        alt="Card"
+        width={400}
+        height={400}
+      />
       <div className="px-6 py-4">
         <div className="font-serif font-bold text-xl mb-2 text-brown-800">
           {title}
