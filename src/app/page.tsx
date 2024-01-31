@@ -35,7 +35,7 @@ export default function Home() {
           </div>
         </div>
         <div className="items-center text-center">
-          <h1>About Us</h1>
+          <h1 className="text-lg font-bold">About Us</h1>
           <p>We are a high-fantasy Live Action Role Play (LARP) game based in Davis County, Utah</p>
         </div>
       </div>
