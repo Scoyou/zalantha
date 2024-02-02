@@ -1,5 +1,4 @@
 import Image from "next/image";
-import mountains from "../public/mountains.jpg";
 
 export const BackgroundImage = ({
   altText,
@@ -9,17 +8,14 @@ export const BackgroundImage = ({
   imageSrc: string;
 }) => {
   return (
-    <Image
-      alt={altText}
-      src={imageSrc}
-      quality={100}
-      fill
-      sizes="100vw"
-      style={{
-        objectFit: "cover",
-        zIndex: -1,
-      }}
-      priority
-    />
+    <div className="fixed top-0 left-0 w-full h-full -z-10">
+      <Image
+        alt={altText}
+        src={imageSrc}
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
+    </div>
   );
 };

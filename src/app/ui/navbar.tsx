@@ -60,7 +60,7 @@ export const Navbar = () => {
           {isOpen && (
             <div
               ref={dropdownRef}
-              className="absolute top-8 left-0 bg-white border border-gray-300 rounded shadow w-48"
+              className="absolute top-8 left-0 bg-white border border-gray-300 rounded shadow lg:w-48 w-32"
             >
               <ul className="divide-y divide-gray-300">
                 <li>
@@ -69,7 +69,7 @@ export const Navbar = () => {
                     className="text-gray-800 hover:text-amber-600 block px-4 py-2"
                     onClick={closeDropdown}
                   >
-                    Get Started
+                    Getting Started
                   </Link>
                 </li>
                 <li>
