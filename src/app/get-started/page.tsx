@@ -30,10 +30,10 @@ export default function GetStarted() {
             is LARP? Well, I&apos;m here to tell you. Did you ever play pretend
             when you were younger? Did you pretend to be a ninja, knight, or
             maybe even pretend to fight monsters? LARP is like that, but for
-            adults and with some rules. It's almost like playing a roleplaying
-            game, but you become the character. Have you ever played D&D and
-            wanted to do more than just roll the dice? With LARP, you can do
-            just that. On this page, we will explore the world we will be
+            adults and with some rules. It&apos;s almost like playing a
+            roleplaying game, but you become the character. Have you ever played
+            D&D and wanted to do more than just roll the dice? With LARP, you
+            can do just that. On this page, we will explore the world we will be
             playing in, the rules, and character creation if you need
             assistance.
           </p>
