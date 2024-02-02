@@ -41,9 +41,7 @@ export default function Rules() {
         players receive one spell, which can be used once per game. With each
         level-up, players can either acquire an additional spell or increase
         their existing spell&apos;s level. As a spell&apos;s level increases,
-        its Difficulty Rating (DR) goes up by 2. This version maintains the
-        essence of your rules while enhancing readability and organization,
-        making it easier for players to understand and follow.
+        its Difficulty Rating (DR) goes up by 2.
       </p>
     </div>
   );
