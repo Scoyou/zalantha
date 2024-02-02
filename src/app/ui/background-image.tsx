@@ -1,10 +1,16 @@
 import Image from "next/image";
 import mountains from "../public/mountains.jpg";
 
-export const BackgroundImage = ({ imageSrc }: { imageSrc: string }) => {
+export const BackgroundImage = ({
+  altText,
+  imageSrc,
+}: {
+  altText: string;
+  imageSrc: string;
+}) => {
   return (
     <Image
-      alt="Mountains"
+      alt={altText}
       src={imageSrc}
       quality={100}
       fill
