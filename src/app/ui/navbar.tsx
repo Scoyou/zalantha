@@ -40,11 +40,6 @@ export const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/history" className="text-amber-100 hover:text-amber-600">
-            History
-          </Link>
-        </li>
-        <li>
           <Link href="/rules" className="text-amber-100 hover:text-amber-600">
             Rules
           </Link>
@@ -65,7 +60,7 @@ export const Navbar = () => {
           {isOpen && (
             <div
               ref={dropdownRef}
-              className="absolute top-8 left-0 bg-white border border-gray-300 rounded shadow"
+              className="absolute top-8 left-0 bg-white border border-gray-300 rounded shadow w-48"
             >
               <ul className="divide-y divide-gray-300">
                 <li>
@@ -75,6 +70,15 @@ export const Navbar = () => {
                     onClick={closeDropdown}
                   >
                     Get Started
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/history"
+                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    onClick={closeDropdown}
+                  >
+                    World History
                   </Link>
                 </li>
                 <li>
