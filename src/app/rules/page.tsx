@@ -4,7 +4,7 @@ export default function Rules() {
     <div className="flex flex-col p-4 bg-parchment min-h-screen">
       <div className="items-center text-center">
         <Image
-          src="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/rules_background.webp"
+          src="https://d1ta48eu7x3n0t.cloudfront.net/rules_background.webp"
           alt="A photo of a scroll"
           className="mx-auto mb-4 w-80 h-80 object-contain"
           width={400}

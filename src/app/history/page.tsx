@@ -6,13 +6,13 @@ export default function History() {
     <div className="flex flex-col p-4 bg-parchment min-h-screen bg-opacity-10 relative">
       <BackgroundImage
         altText="Background - two titans clashing"
-        imageSrc="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_background.webp"
+        imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/history_background.webp"
       />
       <div className="flex items-center justify-center min-h-screen">
         <div className="flex flex-col items-center justify-center shadow-lg bg-amber-100 border border-amber-600 bg-opacity-70 w-full md:w-3/4 p-4 space-y-4">
           <div className="items-center text-center">
             <Image
-              src="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_thumbnail.webp"
+              src="https://d1ta48eu7x3n0t.cloudfront.net/history_thumbnail.webp"
               alt="A photo of a scroll"
               className="mx-auto mb-4 w-80 h-80 object-contain"
               width={400}

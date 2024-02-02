@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ['zalantha-prod-public.s3.us-east-2.amazonaws.com'],
+      domains: ['d1ta48eu7x3n0t.cloudfront.net'],
     },
   };
   

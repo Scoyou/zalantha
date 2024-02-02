@@ -10,7 +10,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-4">
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/rules_background.webp"
+                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/rules_background.webp"
                 title="Rules"
                 subText="The rules of the game are as follows..."
                 buttonText="Read More"
@@ -19,7 +19,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_thumbnail.webp"
+                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/history_thumbnail.webp"
                 title="History"
                 subText="This is the creation story of the world in which our LARPing adventure takes place..."
                 buttonText="Read More"
@@ -28,7 +28,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/factions_thumbnail.webp"
+                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/factions_thumbnail.webp"
                 title="Factions"
                 subText="The Races and factions that populate the realm of Zalantha..."
                 buttonText="Read More"
