@@ -28,8 +28,8 @@ export default function Home() {
             </div>
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/factions_thumbnail.webp"
-                title="Factions"
+                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
+                title=" Races and Factions"
                 subText="The Races and factions that populate the realm of Zalantha..."
                 buttonText="Read More"
                 buttonHref="/factions"

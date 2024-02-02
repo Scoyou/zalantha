@@ -1,6 +1,36 @@
+"use client";
 import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null); // Specify the type here
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="bg-slate-800 border-black border-2 rounded py-3 text-center metamorphous-regular sticky top-0 shadow z-40">
       <ul className="flex justify-center space-x-4">
@@ -24,13 +54,50 @@ export const Navbar = () => {
             Contact
           </Link>
         </li>
-        <li>
-          <Link
-            href="/get-started"
+        <li className="relative">
+          <a
+            href="#"
             className="text-amber-100 hover:text-amber-600"
+            onClick={toggleDropdown}
           >
             Get Started
-          </Link>
+          </a>
+          {isOpen && (
+            <div
+              ref={dropdownRef}
+              className="absolute top-8 left-0 bg-white border border-gray-300 rounded shadow"
+            >
+              <ul className="divide-y divide-gray-300">
+                <li>
+                  <Link
+                    href="/get-started"
+                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    onClick={closeDropdown}
+                  >
+                    Get Started
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/factions"
+                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    onClick={closeDropdown}
+                  >
+                    Factions
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/character-creation"
+                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    onClick={closeDropdown}
+                  >
+                    Character Creation
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
         </li>
       </ul>
     </nav>

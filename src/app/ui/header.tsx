@@ -6,7 +6,7 @@ export const Header = () => {
         style={{
           height: "40rem",
           backgroundImage:
-            "url(https://cdn.midjourney.com/08247bbf-ba55-4945-a811-c141998935dd/0_2.webp)",
+            "url(https://d1ta48eu7x3n0t.cloudfront.net/header_image.webp)",
           backgroundSize: "cover",
         }}
       >
