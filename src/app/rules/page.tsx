@@ -35,13 +35,15 @@ export default function Rules() {
         Warpriests. Arcane Magic is offensive, encompassing elemental magics
         like Fireball or Lightning Bolt, commonly wielded by Mages. Magic usage
         involves rolling a large D20 to determine success or failure.
-        Spellcasting rules are as follows: At Level 1, players receive one
-        spell, which can be used once per game. With each level-up, players can
-        either acquire an additional spell or increase their existing
-        spell&apos;s level. As a spell&apos;s level increases, its Difficulty
-        Rating (DR) goes up by 2. This version maintains the essence of your
-        rules while enhancing readability and organization, making it easier for
-        players to understand and follow.
+      </p>
+      <p className="mt-4">
+        <strong>Spellcasting rules are as follows:</strong> <br /> At Level 1,
+        players receive one spell, which can be used once per game. With each
+        level-up, players can either acquire an additional spell or increase
+        their existing spell&apos;s level. As a spell&apos;s level increases,
+        its Difficulty Rating (DR) goes up by 2. This version maintains the
+        essence of your rules while enhancing readability and organization,
+        making it easier for players to understand and follow.
       </p>
     </div>
   );
