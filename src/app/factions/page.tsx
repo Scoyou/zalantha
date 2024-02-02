@@ -1,8 +1,9 @@
 import { ComingSoon } from "../ui/coming-soon";
 import Image from "next/image";
+import Layout from "../ui/layout";
 export default function Factions() {
   return (
-    <div className="flex flex-col p-4 bg-parchment min-h-screen">
+    <Layout>
       <div className="items-center text-center">
         <Image
           src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
@@ -17,6 +18,6 @@ export default function Factions() {
         </h1>
       </div>
       <ComingSoon />
-    </div>
+    </Layout>
   );
 }

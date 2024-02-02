@@ -1,7 +1,13 @@
 import Image from "next/image";
+import Layout from "../ui/layout";
+import { BackgroundImage } from "../ui/background-image";
 export default function Rules() {
   return (
-    <div className="flex flex-col p-4 bg-parchment min-h-screen">
+    <Layout>
+      <BackgroundImage
+        imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/contact_us_background.webp"
+        altText="Background - a pencil drawing of people on horseback riding away from a castle"
+      />
       <div className="items-center text-center">
         <Image
           src="https://d1ta48eu7x3n0t.cloudfront.net/rules_background.webp"
@@ -43,6 +49,6 @@ export default function Rules() {
         their existing spell&apos;s level. As a spell&apos;s level increases,
         its Difficulty Rating (DR) goes up by 2.
       </p>
-    </div>
+    </Layout>
   );
 }

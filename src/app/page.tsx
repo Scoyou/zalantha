@@ -20,7 +20,7 @@ export default function Home() {
             <div className="w-full md:w-auto">
               <Card
                 imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/history_thumbnail.webp"
-                title="History"
+                title="World History"
                 subText="This is the creation story of the world in which our LARPing adventure takes place..."
                 buttonText="Read More"
                 buttonHref="/history"
