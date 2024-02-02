@@ -1,16 +1,9 @@
 import Image from "next/image";
-
+import { BackgroundImage } from "../ui/background-image";
 export default function GetStarted() {
   return (
-    <div className="flex flex-col p-4 bg-parchment min-h-screen bg-opacity-80 relative">
-      <Image
-        src="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/getting_started_background.webp"
-        alt="background picture on an ancient tomb"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        className="z-0"
-      />
+    <div className="flex flex-col p-4 bg-parchment min-h-screen bg-opacity-10 relative">
+      <BackgroundImage imageSrc="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/getting_started_background.webp" />
       <div className="flex items-center justify-center min-h-screen z-10">
         <div className="flex flex-col items-center justify-center shadow-lg bg-amber-100 border border-amber-600 bg-opacity-70 w-full md:w-3/4 p-4 space-y-4">
           <div className="items-center text-center">
