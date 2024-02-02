@@ -1,15 +1,34 @@
+import Image from "next/image";
+
 export default function History() {
   return (
-    <div
-      className="w-full bg-cover bg-center bg-parchment min-h-screen bg-opacity-80"
-      style={{
-        backgroundImage:
-          "url(https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_background.webp)",
-        backgroundSize: "cover",
-      }}
-    >
-      <div className="flex items-center justify-center min-h-screen">
+    <div className="flex flex-col p-4 bg-parchment min-h-screen bg-opacity-80 relative">
+      <Image
+        src="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_background.webp"
+        alt="background picture on an ancient tomb"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        className="z-0"
+        priority
+      />
+      <div className="flex items-center justify-center min-h-screen z-10">
         <div className="flex flex-col items-center justify-center shadow-lg bg-amber-100 border border-amber-600 bg-opacity-70 w-full md:w-3/4 p-4 space-y-4">
+          <div className="items-center text-center">
+            <Image
+              src="https://zalantha-prod-public.s3.us-east-2.amazonaws.com/history_thumbnail.webp"
+              alt="A photo of a scroll"
+              className="mx-auto mb-4 w-80 h-80 object-contain"
+              width={400}
+              height={400}
+              priority
+            />
+            <h1 className="text-2xl font-bold mb-2">History</h1>
+          </div>
+
+          <h2>
+            <strong>World Creation</strong>
+          </h2>
           <p>
             This is the creation story of the world in which our LARPing
             adventure takes place. It all began with the creation of the Titans.
@@ -36,16 +55,20 @@ export default function History() {
             eternally circling the earth. Some believe Heloks perished long ago,
             but that, as they say, is a story for another time.
           </p>
+          <br />
+          <h2>
+            <strong>How you fit into the world</strong>
+          </h2>
           <p>
-            This is how you fit into the world: Zalantha is a young, burgeoning
-            realm. In the aftermath of the Titan War, various factions emerged.
-            Each of these factions, humanoid in nature but distinct in myriad
-            ways, began to navigate this new world. Striving to establish
-            dominance, they engaged in both battles and diplomatic endeavors. As
-            you embark on your journey in Zalantha, your actions—whether through
-            combat or negotiation—will help you find your place in this nascent
-            realm. Your choices and adventures will shape the future of
-            Zalantha, forging a new destiny for this world.
+            Zalantha is a young, burgeoning realm. In the aftermath of the Titan
+            War, various factions emerged. Each of these factions, humanoid in
+            nature but distinct in myriad ways, began to navigate this new
+            world. Striving to establish dominance, they engaged in both battles
+            and diplomatic endeavors. As you embark on your journey in Zalantha,
+            your actions—whether through combat or negotiation—will help you
+            find your place in this nascent realm. Your choices and adventures
+            will shape the future of Zalantha, forging a new destiny for this
+            world.
           </p>
         </div>
       </div>

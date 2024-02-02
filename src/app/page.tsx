@@ -45,6 +45,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <div className="mt-4 bg-parchent">
+        <h1 className="text-lg font-bold">Upcoming Events</h1>
+      </div>
     </main>
   );
 }

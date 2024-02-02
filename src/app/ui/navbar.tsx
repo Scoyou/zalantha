@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <nav className="bg-slate-800 border-black border-2 rounded py-3 text-center metamorphous-regular sticky top-0 shadow">
+    <nav className="bg-slate-800 border-black border-2 rounded py-3 text-center metamorphous-regular sticky top-0 shadow z-40">
       <ul className="flex justify-center space-x-4">
         <li>
           <Link href="/" className="text-amber-100 hover:text-amber-600">
