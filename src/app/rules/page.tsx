@@ -21,7 +21,7 @@ export default function Rules() {
       </p>
       <p className="mt-4">
         <strong>Here&apos;s how the point system works:</strong> <br />
-        each limb hit counts as one point, while a chest hit counts as two
+        Each limb hit counts as one point, while a chest hit counts as two
         points. Intentional head hits are strictly prohibited; doing so will
         result in disqualification and prevent leveling up from the event. Only
         foam weapons are allowed, and they must be inspected by a Game Master
