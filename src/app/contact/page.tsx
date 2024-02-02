@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { BackgroundImage } from "../ui/background-image";
 
@@ -46,7 +46,7 @@ export default function Contact() {
           </div>
           <p>
             Want to join an event, have questions, or just want to say hi? Fill
-            out the form below. We'll get back to you as soon as we can.
+            out the form below. We&apos;ll get back to you as soon as we can.
           </p>
 
           <form onSubmit={handleSubmit} className="mx-auto max-w-md">
