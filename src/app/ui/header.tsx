@@ -15,9 +15,6 @@ export const Header = () => {
             <h1 className="text-white text-2xl font-semibold uppercase md:text-3xl">
               Knights of Zalantha
             </h1>
-            <button className="mt-4 px-4 py-2 bg-slate-800 text-amber-100 hover:text-amber-600 text-sm uppercase font-medium rounded focus:shadow-outline">
-              Get Started
-            </button>
           </div>
         </div>
       </div>

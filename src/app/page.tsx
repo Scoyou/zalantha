@@ -1,6 +1,6 @@
 import { Header } from "./ui/header";
 import Card from "./ui/card";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <main>
@@ -37,12 +37,24 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="items-center text-center">
+        <div className="w-3/4 mx-auto text-center">
           <h1 className="text-lg font-bold">About Us</h1>
           <p>
             We are a high-fantasy Live Action Role Play (LARP) game based in
-            Davis County, Utah
+            Davis County, Utah. What is LARP? Well, I&apos;m here to tell you.
+            Did you ever play pretend when you were younger? Did you pretend to
+            be a ninja, knight, or maybe even pretend to fight monsters? LARP is
+            like that, but for adults and with some rules. It&apos;s almost like
+            playing a roleplaying game, but you become the character. Have you
+            ever played D&D and wanted to do more than just roll the dice? With
+            LARP, you can do just that.
           </p>
+          <Link
+            href={"/get-started"}
+            className="inline-block bg-amber-600 hover:bg-brown-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-3"
+          >
+            Get Started
+          </Link>
         </div>
       </div>
       <div className="mt-4 bg-parchent">
