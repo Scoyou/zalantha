@@ -100,6 +100,7 @@ export default function Contact() {
           </button>
         </div>
       </form>
+      <p>Or email us directly at heloksrising@zalantha.com</p>
     </Layout>
   );
 }

@@ -11,13 +11,13 @@ const config: Config = {
       colors: {
         parchment: "#FCF5E5",
         parchmentDark: "#7B9095",
-        darkWood: '#3D1A02',
+        darkWood: "#3D1A02",
         brown: {
-          800: "#5b3a29", 
+          800: "#5b3a29",
           600: "#806517",
         },
         amber: {
-          100: "#f4e9d8", 
+          100: "#f4e9d8",
           600: "#DAA520",
         },
       },
