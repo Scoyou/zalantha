@@ -20,6 +20,7 @@ const config: Config = {
           100: "#f4e9d8",
           600: "#DAA520",
         },
+        lightParchment: "#F4EADE",
       },
     },
   },

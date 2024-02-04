@@ -18,7 +18,7 @@ function RaceCard({
 
   return (
     <div className={containerClasses}>
-      <div className="md:flex-shrink-0 md:w-1/4">
+      <div className="md:flex-shrink-0 md:w-1/4 ">
         <Image
           src={imageUrl}
           alt={altText}
@@ -29,7 +29,7 @@ function RaceCard({
         />
       </div>
 
-      <div className="p-4 md:w-3/4">
+      <div className="p-4 md:w-3/4 bg-lightParchment">
         <h2 className="text-xl font-bold">{title}</h2>
         <p className="mt-2 text-gray-600">{content}</p>
       </div>
