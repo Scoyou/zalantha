@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Layout from "../ui/layout";
 import RaceCard from "../ui/race-card";
 import { BackgroundImage } from "../ui/background-image";
