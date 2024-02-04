@@ -63,7 +63,7 @@ export default function GetStarted() {
         <strong>Dwarves:</strong> This faction comprises miners and are the
         greatest builders in the world. Unlike Dwarves in other media, these
         Dwarves have ram horns growing out of their heads. The Dwarves have
-        great beards, and of course, the main feature of this world's Dwarves
+        great beards, and of course, the main feature of this world&apos;s Dwarves
         are their ram horns, which they decorate with paint.
       </p>
       <p>
@@ -113,7 +113,7 @@ export default function GetStarted() {
         <strong>Mage:</strong> Mages in this world have a strong affinity for
         magic and are users of the arcane. Inspirations for this class include
         wizards who learned magic through books, sorcerers born with magic, and
-        warlocks who made pacts with entities for their magic. Mages' weapons
+        warlocks who made pacts with entities for their magic. Mages&apos; weapons
         include staffs, wands, and daggers.
       </p>
       <p>
@@ -138,7 +138,7 @@ export default function GetStarted() {
         <Link href="/contact" className="text-orange-900 hover:underline">
           Contact Form
         </Link>{" "}
-        and we'll get back to you ASAP.
+        and we&apos;ll get back to you ASAP.
       </p>
     </Layout>
   );
