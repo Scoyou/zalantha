@@ -39,6 +39,7 @@ export default function GetStarted() {
         <Link className="text-orange-900 hover:underline" href="/history">
           World History page
         </Link>
+        .
       </p>
       <Image
         src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
@@ -63,8 +64,8 @@ export default function GetStarted() {
         <strong>Dwarves:</strong> This faction comprises miners and are the
         greatest builders in the world. Unlike Dwarves in other media, these
         Dwarves have ram horns growing out of their heads. The Dwarves have
-        great beards, and of course, the main feature of this world&apos;s Dwarves
-        are their ram horns, which they decorate with paint.
+        great beards, and of course, the main feature of this world&apos;s
+        Dwarves are their ram horns, which they decorate with paint.
       </p>
       <p>
         <strong>Elves:</strong> These Elves are one of the most magical races in
@@ -113,8 +114,8 @@ export default function GetStarted() {
         <strong>Mage:</strong> Mages in this world have a strong affinity for
         magic and are users of the arcane. Inspirations for this class include
         wizards who learned magic through books, sorcerers born with magic, and
-        warlocks who made pacts with entities for their magic. Mages&apos; weapons
-        include staffs, wands, and daggers.
+        warlocks who made pacts with entities for their magic. Mages&apos;
+        weapons include staffs, wands, and daggers.
       </p>
       <p>
         <strong>Bard:</strong> The entertainers of the world, bards are
