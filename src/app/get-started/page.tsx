@@ -29,8 +29,8 @@ export default function GetStarted() {
         some rules. It&apos;s almost like playing a roleplaying game, but you
         become the character. Have you ever played D&D and wanted to do more
         than just roll the dice? With LARP, you can do just that. On this page,
-        we will explore the world we will be playing in, the rules, and
-        character creation if you need assistance.
+        we will do a brief Introduction to our world, as well as the races and
+        classes you can choose from for your character.
       </p>
       <p>
         Our adventure takes place in the world of Zalantha. A newly developed
