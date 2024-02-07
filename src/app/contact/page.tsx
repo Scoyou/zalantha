@@ -3,7 +3,7 @@ import React, { useState, useRef, FormEvent } from "react";
 import { BackgroundImage } from "../ui/background-image";
 import Layout from "../ui/layout";
 import emailjs from "@emailjs/browser";
-
+import { ContactModal } from "../ui/contact-modal";
 interface FormData {
   fromName: string;
   fromEmail: string;
@@ -20,6 +20,7 @@ export default function Contact() {
   };
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -49,12 +50,17 @@ export default function Contact() {
         .then(
           () => {
             console.log("SUCCESS!");
+            setShowModal(true); // Show the modal on successful form submission
           },
           (error) => {
             console.log("FAILED...", error.text);
           },
         );
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false); // Method to close the modal
   };
 
   return (
@@ -124,6 +130,7 @@ export default function Contact() {
         </div>
       </form>
       <p>Or email us directly at heloksrising@zalantha.com</p>
+      <ContactModal isOpen={showModal} onClose={closeModal} />
     </Layout>
   );
 }
