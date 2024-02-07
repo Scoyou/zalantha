@@ -56,14 +56,14 @@ export default function GetStarted() {
       </p>
       <strong>Races</strong>
       <div>
-        <p>
+        <p className="mt-2">
           <strong>Orks:</strong> These big brutes are the most barbaric of the
           factions. War is what they crave. Orks are always looking for a good
           fight. Players portraying Orks will paint themselves green and will
           usually have tusks. Orks love to wear war paint, so have fun and get
           creative with it.
         </p>
-        <p>
+        <p className="mt-2">
           <strong>Dwarves:</strong> This faction comprises miners and are the
           greatest builders in the world. Unlike Dwarves in other media, these
           Dwarves have ram horns growing out of their heads. The Dwarves have
@@ -76,18 +76,18 @@ export default function GetStarted() {
           have pointy ears and use blue makeup to lightly apply the blue around
           their skin.
         </p>
-        <p>
+        <p className="mt-2">
           <strong>Humans:</strong> One of the most common races in the land of
           Zalantha. Humans have a variety of ways they can dress and do not have
           any key physical features like the other factions.
         </p>
-        <p>
+        <p className="mt-2">
           <strong>Beastfolk:</strong> This faction has evolved from different
           animals. They could be Minotaurs, wolf men, centaurs, etc. The key for
           players to dress as this race is to combine animal features with human
           features.
         </p>
-        <p>
+        <p className="mt-2">
           <strong>Faefolk:</strong> The race of the Faefolk comes from a place
           where wild magic essentially lives. The Faefolk have a lot of color to
           their skin and costumes. Some Faefolk have wings, while some may have
@@ -101,39 +101,41 @@ export default function GetStarted() {
         </Link>
       </p>
       <strong>Classes</strong>
-      <p>
+      <div>
+      <p className="mt-2">
         <strong>Fighter:</strong> This class is the quintessential melee
         archetype. Knights, barbarians, archers, and monks are among the
         fighters from which you can draw inspiration. Fighters are capable of
         using any weapon in the game.
       </p>
-      <p>
+      <p className="mt-2">
         <strong>Rogue:</strong> These are your stealthy operatives. Inspiration
         for rogues can come from thieves, ninjas, assassins, pirates, and
         rangers. If a rogue successfully backstabs another player, it counts as
         double the points. Rogues can use short bows, crossbows, daggers, and
         smaller swords.
       </p>
-      <p>
+      <p className="mt-2">
         <strong>Mage:</strong> Mages in this world have a strong affinity for
         magic and are users of the arcane. Inspirations for this class include
         wizards who learned magic through books, sorcerers born with magic, and
         warlocks who made pacts with entities for their magic. Mages&apos;
         weapons include staffs, wands, and daggers.
       </p>
-      <p>
+      <p className="mt-2">
         <strong>Bard:</strong> The entertainers of the world, bards are
         storytellers, musicians, and writers who create art inspired by the
         world around them. They possess bardic immunity because their role is
         not to fight but to spin tales. A bard may carry a dagger but is not
         typically combative.
       </p>
-      <p>
+      <p className="mt-2">
         <strong>War Priest:</strong> This class serves as the healers and
         supporters on the battlefield. Their focus is on slinging healing and
         support spells. War Priests are proficient in using maces, axes, and
         swords, usually accompanied by a shield.
       </p>
+      </div>
       <p>
         Once you have your character created, be sure to review the rules on the{" "}
         <Link href="/rules" className="text-orange-900 hover:underline">
