@@ -16,11 +16,11 @@ export default function GetStarted() {
     <Layout>
       <BackgroundImage
         altText="Background - a tomb with Egyptian statues in front of it"
-        imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/getting_started_background.webp"
+        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/getting_started_background.webp`}
       />
       <div className="items-center text-center">
         <Image
-          src="https://d1ta48eu7x3n0t.cloudfront.net/tome_getting_started.webp"
+          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/tome_getting_started.webp`}
           alt="A photo of a scroll"
           className="mx-auto mb-4 w-80 h-80 object-contain"
           width={400}
@@ -54,7 +54,7 @@ export default function GetStarted() {
       </p>
       <div onClick={openModal} className="cursor-pointer">
         <Image
-          src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
+          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
           alt="A map of Zalantha"
           className="mx-auto mb-4 lg:w-2/5 lg:h-2/5 object-contain w-80 h-80"
           width={400}
@@ -74,7 +74,7 @@ export default function GetStarted() {
               Close
             </button>
             <Image
-              src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
+              src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
               alt="A map of Zalantha"
               className="object-contain"
               width={800}

@@ -7,11 +7,11 @@ export default function History() {
     <Layout>
       <BackgroundImage
         altText="Background - two titans clashing"
-        imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/history_background.webp"
+        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_background.webp`}
       />
       <div className="items-center text-center">
         <Image
-          src="https://d1ta48eu7x3n0t.cloudfront.net/history_thumbnail.webp"
+          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_thumbnail.webp`}
           alt="A photo of a scroll"
           className="mx-auto mb-4 w-80 h-80 object-contain"
           width={400}

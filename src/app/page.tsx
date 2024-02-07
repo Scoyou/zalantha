@@ -6,11 +6,11 @@ export default function Home() {
     <main>
       <div className="bg-gray-200">
         <Header />
-        <div className="w-full md:w-3/4 mx-auto my-4 border -mt-16 bg-white">
+        <div className="w-full md:w-3/4 mx-auto my-4 border -mt-16 bg-white relative z-40">
           <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-4">
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/rules_background.webp"
+                imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/rules_background.webp`}
                 title="Rules"
                 subText="The rules of the game are as follows..."
                 buttonText="Read More"
@@ -19,7 +19,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/history_thumbnail.webp"
+                imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_thumbnail.webp`}
                 title="World History"
                 subText="This is the creation story of the world in which our LARPing adventure takes place..."
                 buttonText="Read More"
@@ -28,7 +28,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-auto">
               <Card
-                imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
+                imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
                 title=" Races and Factions"
                 subText="The Races and factions that populate the realm of Zalantha..."
                 buttonText="Read More"

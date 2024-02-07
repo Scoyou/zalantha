@@ -67,7 +67,7 @@ export default function Contact() {
   return (
     <Layout>
       <BackgroundImage
-        imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/contact_us_background.webp"
+        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/contact_us_background.webp`}
         altText="Background - a pencil drawing of people on horseback riding away from a castle"
       />
       <div className="items-center text-center">

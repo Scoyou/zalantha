@@ -7,14 +7,14 @@ export default function Factions() {
     <Layout>
       <BackgroundImage
         altText="Background - a pencil stlye drawing of a medieval battle"
-        imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/battle_background.webp"
+        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/battle_background.webp`}
       />
       <div className="items-center text-center">
         <h1 className="text-2xl font-bold mb-2">
           Races and Factions of Zalantha
         </h1>
         <RaceCard
-          imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/ork_thumbnail.webp"
+          imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/ork_thumbnail.webp`}
           altText="A growling ork"
           title="Orks"
           content="Orks inhabit desert regions, living in tents made from the hides of
@@ -24,7 +24,7 @@ export default function Factions() {
           where they will fight great beasts for all eternity."
         />
         <RaceCard
-          imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/dwarf_thumbnail.webp"
+          imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/dwarf_thumbnail.webp`}
           invertedImagePos
           altText="A stout dwarf with antlers looking towards the camera"
           title="Dwarves"
@@ -35,7 +35,7 @@ export default function Factions() {
           clan."
         />
         <RaceCard
-          imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/beastfolk.webp"
+          imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/beastfolk.webp`}
           altText="A male minotour looking towards the camera"
           title="Beastfolk"
           content="Beastfolk have no land to call their own. Other factions view them as
@@ -43,7 +43,7 @@ export default function Factions() {
           struggling to survive in a cruel and unforgiving world."
         />
         <RaceCard
-          imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/human.webp"
+          imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/human.webp`}
           invertedImagePos
           altText="A man in flowing black robes with a ball of fire flaoting in front of him"
           title="Humans"
@@ -52,7 +52,7 @@ export default function Factions() {
           and cultures can vary significantly."
         />
         <RaceCard
-          imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/faefolk.webp"
+          imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/faefolk.webp`}
           altText="A famle fairy with pixie wings faces the camera"
           title="Faefolk"
           content="The Faefolk reside deep in the woods, making their homes in trees,
@@ -61,7 +61,7 @@ export default function Factions() {
           the forest and living in harmony with the animals."
         />
         <RaceCard
-          imageUrl="https://d1ta48eu7x3n0t.cloudfront.net/elf_thumbnail.webp"
+          imageUrl={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/elf_thumbnail.webp`}
           invertedImagePos
           altText="A femal elf in plate armor with flowing blonde hair"
           title="Elves"

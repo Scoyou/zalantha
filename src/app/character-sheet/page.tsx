@@ -8,7 +8,7 @@ export default function CharacterSheet() {
       <div className="min-h-screen flex flex-col items-center text-center">
         <BackgroundImage
           altText="Background - a pencil drawing of a castle"
-          imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/character_sheet_background.webp"
+          imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/character_sheet_background.webp`}
         />
         <h1 className="text-2xl font-bold mb-2">Character Sheet</h1>
         <div className="relative inline-block">
@@ -19,7 +19,7 @@ export default function CharacterSheet() {
           >
             <div className="group">
               <Image
-                src="https://d1ta48eu7x3n0t.cloudfront.net/character_sheet.jpg"
+                src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/character_sheet.jpg`}
                 alt="A photo of a scroll"
                 className="lg:w-full w-screen object-contain border-4 border-black"
                 priority
