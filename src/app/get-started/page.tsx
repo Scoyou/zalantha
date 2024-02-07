@@ -102,39 +102,39 @@ export default function GetStarted() {
       </p>
       <strong>Classes</strong>
       <div>
-      <p className="mt-2">
-        <strong>Fighter:</strong> This class is the quintessential melee
-        archetype. Knights, barbarians, archers, and monks are among the
-        fighters from which you can draw inspiration. Fighters are capable of
-        using any weapon in the game.
-      </p>
-      <p className="mt-2">
-        <strong>Rogue:</strong> These are your stealthy operatives. Inspiration
-        for rogues can come from thieves, ninjas, assassins, pirates, and
-        rangers. If a rogue successfully backstabs another player, it counts as
-        double the points. Rogues can use short bows, crossbows, daggers, and
-        smaller swords.
-      </p>
-      <p className="mt-2">
-        <strong>Mage:</strong> Mages in this world have a strong affinity for
-        magic and are users of the arcane. Inspirations for this class include
-        wizards who learned magic through books, sorcerers born with magic, and
-        warlocks who made pacts with entities for their magic. Mages&apos;
-        weapons include staffs, wands, and daggers.
-      </p>
-      <p className="mt-2">
-        <strong>Bard:</strong> The entertainers of the world, bards are
-        storytellers, musicians, and writers who create art inspired by the
-        world around them. They possess bardic immunity because their role is
-        not to fight but to spin tales. A bard may carry a dagger but is not
-        typically combative.
-      </p>
-      <p className="mt-2">
-        <strong>War Priest:</strong> This class serves as the healers and
-        supporters on the battlefield. Their focus is on slinging healing and
-        support spells. War Priests are proficient in using maces, axes, and
-        swords, usually accompanied by a shield.
-      </p>
+        <p className="mt-2">
+          <strong>Fighter:</strong> This class is the quintessential melee
+          archetype. Knights, barbarians, archers, and monks are among the
+          fighters from which you can draw inspiration. Fighters are capable of
+          using any weapon in the game.
+        </p>
+        <p className="mt-2">
+          <strong>Rogue:</strong> These are your stealthy operatives.
+          Inspiration for rogues can come from thieves, ninjas, assassins,
+          pirates, and rangers. If a rogue successfully backstabs another
+          player, it counts as double the points. Rogues can use short bows,
+          crossbows, daggers, and smaller swords.
+        </p>
+        <p className="mt-2">
+          <strong>Mage:</strong> Mages in this world have a strong affinity for
+          magic and are users of the arcane. Inspirations for this class include
+          wizards who learned magic through books, sorcerers born with magic,
+          and warlocks who made pacts with entities for their magic. Mages&apos;
+          weapons include staffs, wands, and daggers.
+        </p>
+        <p className="mt-2">
+          <strong>Bard:</strong> The entertainers of the world, bards are
+          storytellers, musicians, and writers who create art inspired by the
+          world around them. They possess bardic immunity because their role is
+          not to fight but to spin tales. A bard may carry a dagger but is not
+          typically combative.
+        </p>
+        <p className="mt-2">
+          <strong>War Priest:</strong> This class serves as the healers and
+          supporters on the battlefield. Their focus is on slinging healing and
+          support spells. War Priests are proficient in using maces, axes, and
+          swords, usually accompanied by a shield.
+        </p>
       </div>
       <p>
         Once you have your character created, be sure to review the rules on the{" "}
