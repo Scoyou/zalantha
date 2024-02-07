@@ -50,7 +50,8 @@ export default function Contact() {
         .then(
           () => {
             console.log("SUCCESS!");
-            setShowModal(true); // Show the modal on successful form submission
+            setShowModal(true);
+            setFormData(initialFormData);
           },
           (error) => {
             console.log("FAILED...", error.text);
