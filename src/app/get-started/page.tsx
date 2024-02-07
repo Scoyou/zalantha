@@ -70,7 +70,7 @@ export default function GetStarted() {
           great beards, and of course, the main feature of this world&apos;s
           Dwarves are their ram horns, which they decorate with paint.
         </p>
-        <p>
+        <p className="mt-2">
           <strong>Elves:</strong> These Elves are one of the most magical races
           in the world. They have hints of blue on their skin. Elf players will
           have pointy ears and use blue makeup to lightly apply the blue around
