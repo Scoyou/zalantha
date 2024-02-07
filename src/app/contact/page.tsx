@@ -4,15 +4,15 @@ import { BackgroundImage } from "../ui/background-image";
 import Layout from "../ui/layout";
 
 interface FormData {
-  name: string;
-  email: string;
+  fromName: string;
+  fromEmail: string;
   message: string;
 }
 
 export default function Contact() {
   const initialFormData: FormData = {
-    name: "",
-    email: "",
+    fromName: "",
+    fromEmail: "",
     message: "",
   };
 
@@ -56,7 +56,7 @@ export default function Contact() {
           <input
             type="text"
             name="name"
-            value={formData.name}
+            value={formData.fromName}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
             required
@@ -70,7 +70,7 @@ export default function Contact() {
           <input
             type="email"
             name="email"
-            value={formData.email}
+            value={formData.fromEmail}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
             required

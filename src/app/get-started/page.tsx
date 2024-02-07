@@ -22,15 +22,17 @@ export default function GetStarted() {
       </div>
 
       <p>
-        Introduction to LARP: So, you want to LARP? First things first: What is
-        LARP? Well, I&apos;m here to tell you. Did you ever play pretend when
-        you were younger? Did you pretend to be a ninja, knight, or maybe even
-        pretend to fight monsters? LARP is like that, but for adults and with
-        some rules. It&apos;s almost like playing a roleplaying game, but you
-        become the character. Have you ever played D&D and wanted to do more
-        than just roll the dice? With LARP, you can do just that. On this page,
-        we will do a brief Introduction to our world, as well as the races and
-        classes you can choose from for your character.
+        <i>
+          Introduction to LARP: So, you want to LARP? First things first: What
+          is LARP? Well, I&apos;m here to tell you. Did you ever play pretend
+          when you were younger? Did you pretend to be a ninja, knight, or maybe
+          even pretend to fight monsters? LARP is like that, but for adults and
+          with some rules. It&apos;s almost like playing a roleplaying game, but
+          you become the character. Have you ever played D&D and wanted to do
+          more than just roll the dice? With LARP, you can do just that. On this
+          page, we will do a brief Introduction to our world, as well as the
+          races and classes you can choose from for your character.
+        </i>
       </p>
       <p>
         Our adventure takes place in the world of Zalantha. A newly developed
@@ -53,43 +55,45 @@ export default function GetStarted() {
         and class that you like.
       </p>
       <strong>Races</strong>
-      <p>
-        <strong>Orks:</strong> These big brutes are the most barbaric of the
-        factions. War is what they crave. Orks are always looking for a good
-        fight. Players portraying Orks will paint themselves green and will
-        usually have tusks. Orks love to wear war paint, so have fun and get
-        creative with it.
-      </p>
-      <p>
-        <strong>Dwarves:</strong> This faction comprises miners and are the
-        greatest builders in the world. Unlike Dwarves in other media, these
-        Dwarves have ram horns growing out of their heads. The Dwarves have
-        great beards, and of course, the main feature of this world&apos;s
-        Dwarves are their ram horns, which they decorate with paint.
-      </p>
-      <p>
-        <strong>Elves:</strong> These Elves are one of the most magical races in
-        the world. They have hints of blue on their skin. Elf players will have
-        pointy ears and use blue makeup to lightly apply the blue around their
-        skin.
-      </p>
-      <p>
-        <strong>Humans:</strong> One of the most common races in the land of
-        Zalantha. Humans have a variety of ways they can dress and do not have
-        any key physical features like the other factions.
-      </p>
-      <p>
-        <strong>Beastfolk:</strong> This faction has evolved from different
-        animals. They could be Minotaurs, wolf men, centaurs, etc. The key for
-        players to dress as this race is to combine animal features with human
-        features.
-      </p>
-      <p>
-        <strong>Faefolk:</strong> The race of the Faefolk comes from a place
-        where wild magic essentially lives. The Faefolk have a lot of color to
-        their skin and costumes. Some Faefolk have wings, while some may have
-        long, silly antennas. Have fun with this— the crazier, the better.
-      </p>
+      <div>
+        <p>
+          <strong>Orks:</strong> These big brutes are the most barbaric of the
+          factions. War is what they crave. Orks are always looking for a good
+          fight. Players portraying Orks will paint themselves green and will
+          usually have tusks. Orks love to wear war paint, so have fun and get
+          creative with it.
+        </p>
+        <p>
+          <strong>Dwarves:</strong> This faction comprises miners and are the
+          greatest builders in the world. Unlike Dwarves in other media, these
+          Dwarves have ram horns growing out of their heads. The Dwarves have
+          great beards, and of course, the main feature of this world&apos;s
+          Dwarves are their ram horns, which they decorate with paint.
+        </p>
+        <p>
+          <strong>Elves:</strong> These Elves are one of the most magical races
+          in the world. They have hints of blue on their skin. Elf players will
+          have pointy ears and use blue makeup to lightly apply the blue around
+          their skin.
+        </p>
+        <p>
+          <strong>Humans:</strong> One of the most common races in the land of
+          Zalantha. Humans have a variety of ways they can dress and do not have
+          any key physical features like the other factions.
+        </p>
+        <p>
+          <strong>Beastfolk:</strong> This faction has evolved from different
+          animals. They could be Minotaurs, wolf men, centaurs, etc. The key for
+          players to dress as this race is to combine animal features with human
+          features.
+        </p>
+        <p>
+          <strong>Faefolk:</strong> The race of the Faefolk comes from a place
+          where wild magic essentially lives. The Faefolk have a lot of color to
+          their skin and costumes. Some Faefolk have wings, while some may have
+          long, silly antennas. Have fun with this— the crazier, the better.
+        </p>
+      </div>
       <p>
         You can find more details on each race on the{" "}
         <Link className="text-orange-900 hover:underline" href="/factions">

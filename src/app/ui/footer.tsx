@@ -11,7 +11,10 @@ export const Footer = () => {
         </p>
       </div>
       <div className="flex justify-center items-center md:ml-auto">
-        <a href="#" className="text-amber-100 mr-2">
+        <a
+          href="https://www.facebook.com/groups/1575524973263344/"
+          className="text-amber-100 mr-2"
+        >
           Facebook
         </a>
         <a href="#" className="text-amber-100 mr-2">
