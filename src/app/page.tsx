@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <div className="bg-gray-200">
         <Header />
-        <div className="w-full md:w-3/4 mx-auto my-4 border -mt-16 bg-white relative z-40">
+        <div className="w-full md:w-3/4 mx-auto my-4 border -mt-16 bg-white relative z-30">
           <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-4">
             <div className="w-full md:w-auto">
               <Card
