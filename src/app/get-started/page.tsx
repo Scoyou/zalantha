@@ -70,6 +70,9 @@ export default function GetStarted() {
             className="modal-content bg-parchment p-5 rounded-lg"
             onClick={(e) => e.stopPropagation()}
           >
+            <button className="float-right" onClick={closeModal}>
+              Close
+            </button>
             <Image
               src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
               alt="A map of Zalantha"
