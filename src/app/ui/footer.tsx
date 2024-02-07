@@ -17,12 +17,6 @@ export const Footer = () => {
         >
           Facebook
         </a>
-        <a href="#" className="text-amber-100 mr-2">
-          Twitch
-        </a>
-        <a href="#" className="text-amber-100">
-          Instagram
-        </a>
       </div>
     </footer>
   );

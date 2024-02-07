@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function CharacterSheet() {
   return (
     <Layout>
-      <div>
+      <div className="min-h-screen">
         <BackgroundImage
           altText="Background - a pencil drawing of a castle"
           imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/character_sheet_background.webp"
@@ -24,10 +24,10 @@ export default function CharacterSheet() {
         <Image
           src="https://d1ta48eu7x3n0t.cloudfront.net/character_sheet.jpg"
           alt="A photo of a scroll"
-          className="mx-auto mb-4 w-screen object-contain"
+          className="mx-auto mb-4 lg:w-full w-screen object-contain border-4 border-black"
+          priority
           width={400}
           height={400}
-          priority
         />
       </div>
     </Layout>
