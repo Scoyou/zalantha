@@ -1,12 +1,21 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/legacy/image";
 import { BackgroundImage } from "../ui/background-image";
 import Layout from "../ui/layout";
 import Link from "next/link";
+
 export default function GetStarted() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <Layout>
       <BackgroundImage
-        altText="Background - a tomb with egyptian statues in front of it"
+        altText="Background - a tomb with Egyptian statues in front of it"
         imageSrc="https://d1ta48eu7x3n0t.cloudfront.net/getting_started_background.webp"
       />
       <div className="items-center text-center">
@@ -43,13 +52,34 @@ export default function GetStarted() {
         </Link>
         .
       </p>
-      <Image
-        src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
-        alt="A map of Zalantha"
-        className="mx-auto mb-4 lg:w-2/5 lg:h-2/5 object-contain w-80 h-80"
-        width={400}
-        height={400}
-      />
+      <div onClick={openModal} className="cursor-pointer">
+        <Image
+          src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
+          alt="A map of Zalantha"
+          className="mx-auto mb-4 lg:w-2/5 lg:h-2/5 object-contain w-80 h-80"
+          width={400}
+          height={400}
+        />
+      </div>
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
+          onClick={closeModal}
+        >
+          <div
+            className="modal-content bg-parchment p-5 rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src="https://d1ta48eu7x3n0t.cloudfront.net/zalantha_map.jpeg"
+              alt="A map of Zalantha"
+              className="object-contain"
+              width={800}
+              height={800}
+            />
+          </div>
+        </div>
+      )}
       <p>
         The first step to getting started is to create a character using a race
         and class that you like.
