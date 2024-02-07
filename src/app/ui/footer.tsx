@@ -14,6 +14,8 @@ export const Footer = () => {
         <a
           href="https://www.facebook.com/groups/1575524973263344/"
           className="text-amber-100 mr-2"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Facebook
         </a>
