@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, FormEvent } from "react";
 import { BackgroundImage } from "../ui/background-image";
 import Layout from "../ui/layout";
+import emailjs from "@emailjs/browser";
 
 interface FormData {
   fromName: string;
@@ -10,6 +11,8 @@ interface FormData {
 }
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null);
+
   const initialFormData: FormData = {
     fromName: "",
     fromEmail: "",
@@ -22,16 +25,36 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendEmail = (e: FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData(initialFormData);
+
+    if (
+      form.current &&
+      process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID &&
+      process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID &&
+      process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+    ) {
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+          form.current,
+          {
+            publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+          },
+        )
+        .then(
+          () => {
+            console.log("SUCCESS!");
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+          },
+        );
+    }
   };
 
   return (
@@ -48,14 +71,14 @@ export default function Contact() {
         the form below. We&apos;ll get back to you as soon as we can.
       </p>
 
-      <form onSubmit={handleSubmit} className="mx-auto max-w-md">
+      <form ref={form} onSubmit={sendEmail} className="mx-auto max-w-md">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Name
           </label>
           <input
             type="text"
-            name="name"
+            name="fromName"
             value={formData.fromName}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
@@ -69,7 +92,7 @@ export default function Contact() {
           </label>
           <input
             type="email"
-            name="email"
+            name="fromEmail"
             value={formData.fromEmail}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
