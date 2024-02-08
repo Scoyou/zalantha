@@ -170,15 +170,22 @@ export default function GetStarted() {
         </p>
       </div>
       <p>
-        Once you have your character created, be sure to review the rules on the{" "}
+        Once you have created your character and filled out your{" "}
+        <Link
+          href="/character-sheet"
+          className="text-orange-900 hover:underline"
+        >
+          character sheet
+        </Link>
+        , make sure to review the rules on the{" "}
         <Link href="/rules" className="text-orange-900 hover:underline">
           Rules page
         </Link>
-        , Then join us for your first event! Have questions? Fill out our{" "}
+        . Then, join us for your first event! Have questions? Complete our{" "}
         <Link href="/contact" className="text-orange-900 hover:underline">
           Contact Form
         </Link>{" "}
-        and we&apos;ll get back to you ASAP.
+        and we&apos;ll get back to you as soon as possible.
       </p>
     </Layout>
   );
