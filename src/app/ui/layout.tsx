@@ -1,6 +1,3 @@
-import Image from "next/legacy/image";
-import { BackgroundImage } from "../ui/background-image";
-
 export default function Layout(props: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col p-4 bg-parchment min-h-screen bg-opacity-40 relative">
