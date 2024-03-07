@@ -17,10 +17,11 @@ const config: Config = {
           600: "#806517",
         },
         amber: {
-          100: "#f4e9d8",
+          100: "#FFF4C9",
           600: "#DAA520",
         },
         lightParchment: "#F4EADE",
+        mapParchment: "#FAF8F5",
       },
     },
   },

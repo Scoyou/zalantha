@@ -1,12 +1,13 @@
 import { Header } from "./ui/header";
 import Card from "./ui/card";
 import Link from "next/link";
+import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <div className="bg-gray-200">
+      <div className="bg-mapParchment">
         <Header />
-        <div className="w-full md:w-3/4 mx-auto my-4 border -mt-16 bg-white relative z-30">
+        <div className="w-full md:w-3/4 mx-auto my-4 border -mt-12 bg-white relative z-30">
           <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-4">
             <div className="w-full md:w-auto">
               <Card
@@ -57,8 +58,20 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="mt-4 bg-parchent">
-        <h1 className="text-lg font-bold">Upcoming Events</h1>
+      <div className="relative mt-4 h-[40rem]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/header_image.webp`} // The path to your image
+            alt="Background"
+            layout="fill"
+            objectFit="cover" // This ensures the image covers the div area without stretching.
+          />
+        </div>
+        <div className="absolute inset-0 z-10 bg-[#FAF8F5] opacity-25"></div>{" "}
+        <div className="relative z-20 p-4 bg-parchment bg-opacity-50">
+          <h1 className="text-lg font-bold">Upcoming Events</h1>
+          <p>Stay tuned for events coming up in Spring 2024!</p>
+        </div>
       </div>
     </main>
   );
