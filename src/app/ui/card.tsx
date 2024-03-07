@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/legacy/image";
 const Card = ({
   imageUrl,
@@ -31,12 +32,12 @@ const Card = ({
             </div>
             <p className="text-gray-700 text-base">{subText}</p>
           </div>
-          <Link
-            href={buttonHref}
+          <button
+            onClick={() => window.location.assign(buttonHref)}
             className="inline-block bg-amber-600 hover:bg-brown-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             {buttonText}
-          </Link>
+          </button>
         </div>
       </div>
     </div>
