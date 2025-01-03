@@ -70,7 +70,7 @@ export default function Home() {
         <div className="absolute inset-0 z-10 bg-[#FAF8F5] opacity-25"></div>{" "}
         <div className="relative z-20 p-4 bg-parchment bg-opacity-50">
           <h1 className="text-lg font-bold">Upcoming Events</h1>
-          <p>Stay tuned for events coming up in Spring 2024!</p>
+          <p>Stay tuned for events coming up in 2025!</p>
         </div>
       </div>
     </main>
