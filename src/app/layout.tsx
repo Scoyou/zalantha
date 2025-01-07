@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "./ui/navbar";
 import { Footer } from "./ui/footer";
 import Head from "next/head";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
