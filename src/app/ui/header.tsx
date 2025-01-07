@@ -11,6 +11,7 @@ export const Header = () => {
         objectPosition="center"
         alt="Knights of Zalantha"
         priority
+        loading="eager"
       />
     </header>
   );

@@ -65,6 +65,7 @@ export default function Home() {
             alt="Background"
             layout="fill"
             objectFit="cover" // This ensures the image covers the div area without stretching.
+            loading="lazy"
           />
         </div>
         <div className="absolute inset-0 z-10 bg-[#FAF8F5] opacity-25"></div>{" "}

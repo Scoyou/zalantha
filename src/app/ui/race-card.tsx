@@ -26,6 +26,8 @@ function RaceCard({
           height={200}
           layout="responsive"
           objectFit="cover"
+          placeholder="blur"
+          loading="lazy"
         />
       </div>
 

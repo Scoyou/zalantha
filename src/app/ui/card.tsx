@@ -22,6 +22,8 @@ const Card = ({
           src={imageUrl}
           alt="Card image"
           layout="fill"
+          loading="lazy"
+          placeholder="blur"
         />
       </div>
       <div className="px-6 py-4 relative z-10 h-3/5">

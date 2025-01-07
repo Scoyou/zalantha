@@ -61,7 +61,7 @@ export default function Contact() {
   };
 
   const closeModal = () => {
-    setShowModal(false); // Method to close the modal
+    setShowModal(false);
   };
 
   return (
