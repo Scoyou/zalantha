@@ -1,12 +1,12 @@
 export const Footer = () => {
   return (
-    <footer className="mt-12 border-t border-brass/20 bg-night/90 px-6 py-6 text-center text-sm text-brass/80 backdrop-blur">
+    <footer className="mt-12 border-t border-brass/20 bg-night/90 px-6 py-6 text-center text-sm text-brass/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
         <div className="flex flex-col items-center gap-1 md:flex-row">
           <p className="font-display tracking-[0.2em] uppercase text-brass">
           © {new Date().getFullYear()}. All rights reserved.
         </p>
-          <p className="text-xs text-brass/70 md:ml-3">
+          <p className="text-xs text-brass/80 md:ml-3">
           Favicon by{" "}
             <a href="https://icons8.com" className="text-brass/90">
             Icons 8

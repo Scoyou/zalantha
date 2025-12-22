@@ -13,21 +13,13 @@ export default function GetStarted() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <Layout>
+    <Layout variant="dark">
       <BackgroundImage
         altText="Background - a tomb with Egyptian statues in front of it"
         imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/getting_started_background.webp`}
       />
       <div className="items-center text-center">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/tome_getting_started.webp`}
-          alt="A photo of a scroll"
-          className="mx-auto mb-6 h-72 w-72 object-contain md:h-80 md:w-80"
-          width={400}
-          height={400}
-          priority
-        />
-        <h1 className="text-3xl text-ink">Get Started</h1>
+        <h1 className="text-3xl text-mist">Get Started</h1>
       </div>
 
       <p>
@@ -47,12 +39,12 @@ export default function GetStarted() {
         Our adventure takes place in the world of Zalantha. A newly developed
         realm full of magic. You can learn more about the creation of our world
         on the{" "}
-        <Link className="link-ember" href="/history">
+        <Link className="link-ember-light" href="/history">
           World History page
         </Link>
         .
       </p>
-      <div onClick={openModal} className="cursor-pointer">
+      <div onClick={openModal} className="cursor-pointer items-center text-center">
         <Image
           src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
           alt="A map of Zalantha"
@@ -129,7 +121,7 @@ export default function GetStarted() {
       </div>
       <p>
         You can find more details on each race on the{" "}
-        <Link className="link-ember" href="/factions">
+        <Link className="link-ember-light" href="/factions">
           Factions page.
         </Link>
       </p>
@@ -171,15 +163,15 @@ export default function GetStarted() {
       </div>
       <p>
         Once you have created your character and filled out your{" "}
-        <Link href="/character-sheet" className="link-ember">
+        <Link href="/character-sheet" className="link-ember-light">
           character sheet
         </Link>
 , make sure to review the rules on the{" "}
-        <Link href="/rules" className="link-ember">
+        <Link href="/rules" className="link-ember-light">
           Rules page
         </Link>
         . Then, join us for your first event! Have questions? Complete our{" "}
-        <Link href="/contact" className="link-ember">
+        <Link href="/contact" className="link-ember-light">
           Contact Form
         </Link>{" "}
         and we&apos;ll get back to you as soon as possible.

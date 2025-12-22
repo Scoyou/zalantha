@@ -10,7 +10,7 @@ export default function CharacterSheet() {
           altText="Background - a pencil drawing of a castle"
           imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/character_sheet_background.webp`}
         />
-        <h1 className="text-3xl text-ink">Character Sheet</h1>
+        <h1 className="text-3xl text-mist">Character Sheet</h1>
         <div className="relative inline-block">
           <Link
             href="/charactersheet.pdf"

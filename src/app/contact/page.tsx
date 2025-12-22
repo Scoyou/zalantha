@@ -65,13 +65,13 @@ export default function Contact() {
   };
 
   return (
-    <Layout>
+    <Layout variant="dark">
       <BackgroundImage
         imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/contact_us_background.webp`}
         altText="Background - a pencil drawing of people on horseback riding away from a castle"
       />
       <div className="items-center text-center">
-        <h1 className="text-3xl text-ink">Contact Us</h1>
+        <h1 className="text-3xl text-mist">Contact Us</h1>
       </div>
       <p>
         Want to join an event, have questions, or just want to say hi? Fill out
@@ -80,7 +80,7 @@ export default function Contact() {
 
       <form ref={form} onSubmit={sendEmail} className="mx-auto max-w-md">
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist/80">
             Name
           </label>
           <input
@@ -94,7 +94,7 @@ export default function Contact() {
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist/80">
             Email
           </label>
           <input
@@ -108,7 +108,7 @@ export default function Contact() {
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-slate">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist/80">
             Message
           </label>
           <textarea
@@ -130,7 +130,7 @@ export default function Contact() {
           </button>
         </div>
       </form>
-      <p className="text-center text-sm text-slate">
+      <p className="text-center text-sm text-mist/80">
         Or email us directly at heloksrising@zalantha.com
       </p>
       <ContactModal isOpen={showModal} onClose={closeModal} />

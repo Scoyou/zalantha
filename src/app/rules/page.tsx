@@ -3,20 +3,13 @@ import Layout from "../ui/layout";
 import { BackgroundImage } from "../ui/background-image";
 export default function Rules() {
   return (
-    <Layout>
+    <Layout variant="dark">
       <BackgroundImage
         imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/contact_us_background.webp`}
         altText="Background - a pencil drawing of people on horseback riding away from a castle"
       />
       <div className="items-center text-center">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/rules_background.webp`}
-          alt="A photo of a scroll"
-          className="mx-auto mb-6 h-72 w-72 object-contain md:h-80 md:w-80"
-          width={400}
-          height={400}
-        />
-        <h1 className="text-3xl text-ink">Rules</h1>
+        <h1 className="text-3xl text-mist">Rules</h1>
       </div>
 
       <p>

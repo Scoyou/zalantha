@@ -15,7 +15,7 @@ export const Header = () => {
         loading="eager"
         className="drop-shadow-[0_30px_70px_rgba(18,12,8,0.55)]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-night/70 via-night/30 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-night/80 via-night/50 to-transparent"></div>
     </header>
   );
 };

@@ -16,7 +16,7 @@ export const BackgroundImage = ({
         objectFit="cover"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-night/40 via-night/20 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-night/70 via-night/40 to-night/10"></div>
     </div>
   );
 };

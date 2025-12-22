@@ -50,15 +50,22 @@ h4 {
 }
 
 .surface-panel {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(18px);
 }
 
 .surface-panel--deep {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.98);
   box-shadow: var(--shadow-strong);
+}
+
+.surface-panel--night {
+  background: rgba(18, 12, 8, 0.82);
+  border: 1px solid rgba(242, 194, 123, 0.18);
+  box-shadow: var(--shadow-strong);
+  color: #f3e9da;
 }
 
 .btn-primary {
@@ -77,12 +84,21 @@ h4 {
 }
 
 .link-ember {
-  color: #c9793b;
+  color: #8b4b1d;
   font-weight: 600;
 }
 
 .link-ember:hover {
-  color: #8b4b1d;
+  color: #5e3012;
+}
+
+.link-ember-light {
+  color: #f2c27b;
+  font-weight: 600;
+}
+
+.link-ember-light:hover {
+  color: #ffe0aa;
 }
 
 .animate-fade-in {

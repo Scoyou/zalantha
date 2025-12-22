@@ -74,7 +74,7 @@ export default function Home() {
           <div className="absolute inset-0 flex items-end justify-start p-8 md:p-12">
             <div className="surface-panel rounded-[24px] px-6 py-5 text-left animate-fade-in">
               <h1 className="text-2xl text-ink md:text-3xl">Upcoming Events</h1>
-              <p className="mt-2 text-sm text-slate md:text-base">
+              <p className="mt-2 text-sm text-ink/70 md:text-base">
                 Stay tuned for events coming up in 2025!
               </p>
             </div>

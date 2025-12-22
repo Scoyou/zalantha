@@ -4,24 +4,16 @@ import Layout from "../ui/layout";
 
 export default function History() {
   return (
-    <Layout>
+    <Layout variant="dark">
       <BackgroundImage
         altText="Background - two titans clashing"
         imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_background.webp`}
       />
       <div className="items-center text-center">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_thumbnail.webp`}
-          alt="A photo of a scroll"
-          className="mx-auto mb-6 h-72 w-72 object-contain md:h-80 md:w-80"
-          width={400}
-          height={400}
-          priority
-        />
-        <h1 className="text-3xl text-ink">History</h1>
+        <h1 className="text-3xl text-mist">History</h1>
       </div>
 
-      <h2>
+      <h2 className="text-2xl text-mist">
         <strong>World Creation</strong>
       </h2>
       <p>
@@ -50,7 +42,7 @@ export default function History() {
         ago, but that, as they say, is a story for another time.
       </p>
       <br />
-      <h2>
+      <h2 className="text-2xl text-mist">
         <strong>How you fit into the world</strong>
       </h2>
       <p>
