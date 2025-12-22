@@ -38,7 +38,7 @@ const Card = ({
           </div>
           <button
             onClick={() => window.location.assign(buttonHref)}
-            className="btn-primary text-sm uppercase tracking-[0.2em]"
+            className="btn-primary btn-primary--shimmer text-sm uppercase tracking-[0.2em]"
           >
             {buttonText}
           </button>

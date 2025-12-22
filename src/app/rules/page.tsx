@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 export default function Rules() {
   return (
     <Layout variant="dark" className="themed-panel">

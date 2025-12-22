@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/legacy/image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import Link from "next/link";
 
 export default function GetStarted() {

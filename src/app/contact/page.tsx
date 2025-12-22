@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, FormEvent } from "react";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import emailjs from "@emailjs/browser";
 import { ContactModal } from "../ui/contact-modal";
 interface FormData {
@@ -133,7 +133,7 @@ export default function Contact() {
         <div className="text-center">
           <button
             type="submit"
-            className="btn-primary text-xs uppercase tracking-[0.3em]"
+            className="btn-primary btn-primary--shimmer text-xs uppercase tracking-[0.3em]"
           >
             Submit
           </button>

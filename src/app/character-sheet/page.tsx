@@ -1,4 +1,4 @@
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import Image from "next/image";
 export default function CharacterSheet() {
   return (

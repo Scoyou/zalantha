@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <section className="relative">
         <Header />
-        <div className="relative z-20 -mt-6 px-4 pb-16 md:-mt-16 md:px-6">
+        <div className="relative z-20 mt-6 px-4 pb-16 md:mt-10 md:px-6">
           <div className="surface-panel ornate-frame mx-auto w-full max-w-6xl rounded-2xl px-4 py-8 md:rounded-[36px] md:px-10 md:py-10">
             <div className="grid gap-6 md:grid-cols-3">
               <div className="animate-rise-in" style={{ animationDelay: "0.05s" }}>
@@ -55,7 +55,7 @@ export default function Home() {
             ever played D&D and wanted to do more than just roll the dice? With
             LARP, you can do just that.
           </p>
-          <Link href="/get-started" className="btn-primary mt-6 inline-flex text-xs uppercase tracking-[0.3em]">
+          <Link href="/get-started" className="btn-primary btn-primary--shimmer mt-6 inline-flex text-xs uppercase tracking-[0.3em]">
             Get Started
           </Link>
         </div>

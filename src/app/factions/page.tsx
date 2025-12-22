@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import RaceCard from "../ui/race-card";
 import { BackgroundImage } from "../ui/background-image";
 export default function Factions() {

@@ -1,6 +1,6 @@
 import Image from "next/legacy/image";
 import { BackgroundImage } from "../ui/background-image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 
 export default function History() {
   return (
