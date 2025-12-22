@@ -2,7 +2,7 @@
 Website for the Knights of Zalantha LARP. 
 
 ## Dev setup
-Site is hosted on netlify and using EmailJS for email service. Images are hosted in S3 served via AWS CloudFront.
+Site is hosted on Vercel and using EmailJS for email service. Images are hosted in S3 served via AWS CloudFront.
 
 ### Getting Started
 
