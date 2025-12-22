@@ -45,9 +45,15 @@ export default function RootLayout({
         />
       </head>
       <body className={`${bodyFont.variable} ${displayFont.variable}`}>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <Navbar />
-        <PageTransition>{children}</PageTransition>
+        <main id="main-content" className="site-main">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );

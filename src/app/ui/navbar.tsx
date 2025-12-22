@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -59,8 +61,30 @@ export const Navbar = () => {
     };
   }, [isDropdownOpen]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeDropdown();
+        closeMobileMenu();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    closeDropdown();
+    closeMobileMenu();
+  }, [pathname]);
+
   return (
-    <nav className="nav-shell sticky top-0 z-40 border-b border-brass/40 bg-parchment/80 backdrop-blur-xl shadow-[0_12px_30px_rgba(120,98,86,0.18)]">
+    <nav
+      className="nav-shell sticky top-0 z-40 border-b border-brass/40 bg-parchment/80 backdrop-blur-xl shadow-[0_12px_30px_rgba(120,98,86,0.18)]"
+      aria-label="Primary"
+    >
       <div className="relative mx-auto flex max-w-6xl items-center justify-center px-4 py-4">
         <button
           type="button"
@@ -106,16 +130,20 @@ export const Navbar = () => {
           </Link>
         </li>
         <li className="relative">
-          <a
-            href="#"
+          <button
+            type="button"
             className="transition-colors duration-300 hover:text-ember"
             onClick={toggleDropdown}
+            aria-expanded={isDropdownOpen}
+            aria-controls="desktop-dropdown"
+            aria-haspopup="true"
           >
             Get Started
-          </a>
+          </button>
           {isDropdownOpen && (
             <div
               ref={dropdownRef}
+              id="desktop-dropdown"
               className="nav-dropdown absolute left-1/2 top-12 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/70 bg-mapParchment/95 shadow-xl backdrop-blur animate-fade-in"
             >
               <ul className="nav-dropdown-list divide-y divide-amber-100/50 text-xs font-semibold uppercase tracking-[0.18em] text-ink/80">
@@ -182,8 +210,15 @@ export const Navbar = () => {
         <div
           id="mobile-menu"
           className="nav-mobile fixed inset-x-0 top-16 z-30 flex h-[calc(100%-4rem)] flex-col items-center justify-start gap-6 bg-parchment/80 px-6 text-center backdrop-blur-xl md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          onClick={closeMobileMenu}
         >
-          <ul className="nav-mobile-panel mt-6 w-full max-w-xs space-y-6 rounded-3xl border border-white/70 bg-white/75 px-8 py-10 text-lg font-semibold uppercase tracking-[0.25em] text-ink font-display shadow-xl">
+          <ul
+            className="nav-mobile-panel mt-6 w-full max-w-xs space-y-6 rounded-3xl border border-white/70 bg-white/75 px-8 py-10 text-lg font-semibold uppercase tracking-[0.25em] text-ink font-display shadow-xl"
+            onClick={(event) => event.stopPropagation()}
+          >
             <li>
               <Link
                 href="/"

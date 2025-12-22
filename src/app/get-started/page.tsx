@@ -44,7 +44,12 @@ export default function GetStarted() {
         </Link>
         .
       </p>
-      <div onClick={openModal} className="cursor-pointer items-center text-center">
+      <button
+        type="button"
+        onClick={openModal}
+        className="cursor-pointer items-center text-center"
+        aria-label="Open Zalantha map"
+      >
         <Image
           src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
           alt="A map of Zalantha"
@@ -52,7 +57,7 @@ export default function GetStarted() {
           width={800}
           height={800}
         />
-      </div>
+      </button>
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-night/60 backdrop-blur-sm"

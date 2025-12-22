@@ -80,38 +80,52 @@ export default function Contact() {
 
       <form ref={form} onSubmit={sendEmail} className="mx-auto w-full md:max-w-md">
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
+          <label
+            htmlFor="fromName"
+            className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
+          >
             Name
           </label>
           <input
             type="text"
+            id="fromName"
             name="fromName"
             value={formData.fromName}
             onChange={handleChange}
+            autoComplete="name"
             className="w-full rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm text-ink shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
+          <label
+            htmlFor="fromEmail"
+            className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
+          >
             Email
           </label>
           <input
             type="email"
+            id="fromEmail"
             name="fromEmail"
             value={formData.fromEmail}
             onChange={handleChange}
+            autoComplete="email"
             className="w-full rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm text-ink shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
+          <label
+            htmlFor="message"
+            className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
+          >
             Message
           </label>
           <textarea
+            id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}

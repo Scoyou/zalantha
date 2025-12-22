@@ -32,6 +32,8 @@ body {
   min-height: 100vh;
   font-family: var(--font-body);
   font-size: 1.0625rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
   color: #3a2a24;
   background-color: #fbf7ef;
   background-image: radial-gradient(circle at 8% 12%, rgba(90, 70, 130, 0.3), transparent 55%),
@@ -39,6 +41,37 @@ body {
     radial-gradient(circle at 55% 85%, rgba(92, 82, 140, 0.28), transparent 52%),
     radial-gradient(circle at 28% 70%, rgba(72, 110, 156, 0.22), transparent 55%),
     linear-gradient(135deg, rgba(255, 248, 240, 0.7), rgba(246, 236, 223, 0.3));
+}
+
+.site-main {
+  min-height: calc(100vh - 8rem);
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(231, 214, 178, 0.6);
+  color: #3a2a24;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .skip-link {
+  background: rgba(16, 20, 30, 0.95);
+  border-color: rgba(120, 132, 160, 0.5);
+  color: #f3e6da;
 }
 
 [data-theme="dark"] body {
