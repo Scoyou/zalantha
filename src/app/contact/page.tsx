@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useRef, FormEvent } from "react";
-import { BackgroundImage } from "../ui/background-image";
 import Layout from "../ui/layout";
 import emailjs from "@emailjs/browser";
 import { ContactModal } from "../ui/contact-modal";
@@ -65,11 +64,7 @@ export default function Contact() {
   };
 
   return (
-    <Layout variant="dark">
-      <BackgroundImage
-        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/contact_us_background.webp`}
-        altText="Background - a pencil drawing of people on horseback riding away from a castle"
-      />
+    <Layout variant="dark" className="themed-panel">
       <div className="items-center text-center">
         <h1 className="text-3xl text-mist">Contact Us</h1>
       </div>

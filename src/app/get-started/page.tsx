@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/legacy/image";
-import { BackgroundImage } from "../ui/background-image";
 import Layout from "../ui/layout";
 import Link from "next/link";
 
@@ -13,11 +12,7 @@ export default function GetStarted() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <Layout variant="dark">
-      <BackgroundImage
-        altText="Background - a tomb with Egyptian statues in front of it"
-        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/getting_started_background.webp`}
-      />
+    <Layout variant="dark" className="themed-panel">
       <div className="items-center text-center">
         <h1 className="text-3xl text-mist">Get Started</h1>
       </div>
