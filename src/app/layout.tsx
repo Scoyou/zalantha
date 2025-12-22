@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Cinzel, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./ui/navbar";
@@ -21,16 +22,28 @@ export const metadata: Metadata = {
   description: "Knights of Zalantha LARP",
 };
 
+const cloudfrontUrl = process.env.NEXT_PUBLIC_CLOUDFRONT_URL;
+const cloudfrontOrigin = cloudfrontUrl ? new URL(cloudfrontUrl).origin : null;
+const shouldUseSpeedInsights =
+  process.env.VERCEL_ENV === "production" ||
+  process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = headers().get("x-nonce") ?? undefined;
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        {cloudfrontOrigin ? (
+          <link rel="preconnect" href={cloudfrontOrigin} />
+        ) : null}
         <script
+          nonce={nonce}
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(() => {
@@ -53,7 +66,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
-        <SpeedInsights />
+        {shouldUseSpeedInsights ? <SpeedInsights /> : null}
       </body>
     </html>
   );
