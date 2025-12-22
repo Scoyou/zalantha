@@ -5,12 +5,12 @@ import Link from "next/link";
 export default function CharacterSheet() {
   return (
     <Layout>
-      <div className="min-h-screen flex flex-col items-center text-center">
+      <div className="flex min-h-screen flex-col items-center text-center">
         <BackgroundImage
           altText="Background - a pencil drawing of a castle"
           imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/character_sheet_background.webp`}
         />
-        <h1 className="text-2xl font-bold mb-2">Character Sheet</h1>
+        <h1 className="text-3xl text-ink">Character Sheet</h1>
         <div className="relative inline-block">
           <Link
             href="/charactersheet.pdf"
@@ -21,13 +21,15 @@ export default function CharacterSheet() {
               <Image
                 src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/character_sheet.jpg`}
                 alt="A photo of a scroll"
-                className="lg:w-full w-screen object-contain border-4 border-black"
+                className="w-screen rounded-[24px] border border-white/60 object-contain shadow-2xl lg:w-full"
                 priority
                 width={400}
                 height={400}
               />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-white font-bold">Download</span>
+              <div className="absolute inset-0 flex items-center justify-center rounded-[24px] bg-night/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="font-display text-sm uppercase tracking-[0.3em] text-brass">
+                  Download
+                </span>
               </div>
             </div>
           </Link>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cinzel, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./ui/navbar";
 import { Footer } from "./ui/footer";
@@ -7,7 +7,14 @@ import Head from "next/head";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const bodyFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+const displayFont = Cinzel({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: "Knights of Zalantha",
@@ -24,7 +31,7 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className={inter.className}>
+      <body className={`${bodyFont.variable} ${displayFont.variable} font-sans`}>
         <Navbar />
         {children}
         <Footer />

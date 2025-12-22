@@ -32,27 +32,37 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-darkWood border-black border-2 py-3 text-center metamorphous-regular sticky top-0 shadow z-40">
-      <ul className="flex justify-center space-x-4">
+    <nav className="sticky top-0 z-40 border-b border-brass/20 bg-night/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3">
+        <ul className="flex flex-wrap justify-center gap-4 text-sm font-semibold uppercase tracking-[0.2em] text-brass font-display">
         <li>
-          <Link href="/" className="text-amber-100 hover:text-amber-600">
+          <Link
+            href="/"
+            className="transition-colors duration-300 hover:text-amber-100"
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link href="/rules" className="text-amber-100 hover:text-amber-600">
+          <Link
+            href="/rules"
+            className="transition-colors duration-300 hover:text-amber-100"
+          >
             Rules
           </Link>
         </li>
         <li>
-          <Link href="/contact" className="text-amber-100 hover:text-amber-600">
+          <Link
+            href="/contact"
+            className="transition-colors duration-300 hover:text-amber-100"
+          >
             Contact
           </Link>
         </li>
         <li className="relative">
           <a
             href="#"
-            className="text-amber-100 hover:text-amber-600"
+            className="transition-colors duration-300 hover:text-amber-100"
             onClick={toggleDropdown}
           >
             Get Started
@@ -60,13 +70,13 @@ export const Navbar = () => {
           {isOpen && (
             <div
               ref={dropdownRef}
-              className="absolute top-8 left-0 bg-white border border-gray-300 rounded shadow lg:w-48 w-32"
+              className="absolute left-1/2 top-10 w-52 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/60 bg-white/90 shadow-xl backdrop-blur animate-fade-in"
             >
-              <ul className="divide-y divide-gray-300">
+              <ul className="divide-y divide-stone-200 text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                 <li>
                   <Link
                     href="/get-started"
-                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    className="block px-4 py-3 transition-colors duration-300 hover:text-ember"
                     onClick={closeDropdown}
                   >
                     Getting Started
@@ -75,7 +85,7 @@ export const Navbar = () => {
                 <li>
                   <Link
                     href="/history"
-                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    className="block px-4 py-3 transition-colors duration-300 hover:text-ember"
                     onClick={closeDropdown}
                   >
                     World History
@@ -84,7 +94,7 @@ export const Navbar = () => {
                 <li>
                   <Link
                     href="/factions"
-                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    className="block px-4 py-3 transition-colors duration-300 hover:text-ember"
                     onClick={closeDropdown}
                   >
                     Factions
@@ -93,7 +103,7 @@ export const Navbar = () => {
                 <li>
                   <Link
                     href="/character-sheet"
-                    className="text-gray-800 hover:text-amber-600 block px-4 py-2"
+                    className="block px-4 py-3 transition-colors duration-300 hover:text-ember"
                     onClick={closeDropdown}
                   >
                     Character Sheet
@@ -103,7 +113,8 @@ export const Navbar = () => {
             </div>
           )}
         </li>
-      </ul>
+        </ul>
+      </div>
     </nav>
   );
 };

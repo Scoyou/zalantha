@@ -13,12 +13,12 @@ export default function History() {
         <Image
           src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_thumbnail.webp`}
           alt="A photo of a scroll"
-          className="mx-auto mb-4 w-80 h-80 object-contain"
+          className="mx-auto mb-6 h-72 w-72 object-contain md:h-80 md:w-80"
           width={400}
           height={400}
           priority
         />
-        <h1 className="text-2xl font-bold mb-2">History</h1>
+        <h1 className="text-3xl text-ink">History</h1>
       </div>
 
       <h2>

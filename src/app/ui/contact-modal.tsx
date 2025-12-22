@@ -8,13 +8,12 @@ export const ContactModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
-      <div className="bg-white p-4 rounded-lg shadow-lg">
-        <p>Thank you! we&apos;ll get back to you as soon as possible.</p>
-        <button
-          onClick={onClose}
-          className="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
-        >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-night/60 backdrop-blur-sm">
+      <div className="surface-panel surface-panel--deep w-full max-w-md rounded-[28px] px-6 py-8 text-center">
+        <p className="text-base text-ink">
+          Thank you! we&apos;ll get back to you as soon as possible.
+        </p>
+        <button onClick={onClose} className="btn-primary mt-6 text-sm uppercase tracking-[0.2em]">
           Close
         </button>
       </div>

@@ -15,28 +15,30 @@ const Card = ({
   buttonHref: string;
 }) => {
   return (
-    <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg bg-amber-100 border border-amber-600 p-4 my-4 relative h-[500px] md:w-[300px] w-11/12">
-      <div className="w-full h-2/5 overflow-hidden">
+    <div className="group relative mx-auto h-[520px] w-11/12 max-w-sm overflow-hidden rounded-[28px] border border-white/60 bg-white/80 p-4 shadow-xl backdrop-blur md:w-[320px]">
+      <div className="relative h-[45%] w-full overflow-hidden rounded-[22px]">
         <Image
-          className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           src={imageUrl}
           alt="Card image"
           layout="fill"
           loading="lazy"
-          placeholder="blur"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/50 via-transparent to-transparent opacity-70"></div>
       </div>
-      <div className="px-6 py-4 relative z-10 h-3/5">
-        <div className="bg-parchment bg-opacity-90 rounded p-4 h-full flex flex-col justify-between">
+      <div className="relative z-10 h-[55%] px-2 py-5">
+        <div className="flex h-full flex-col justify-between rounded-[20px] bg-mist/80 p-5">
           <div>
-            <div className="font-serif font-bold text-xl mb-2 text-brown-800">
+            <div className="font-display text-xl tracking-wide text-ink">
               {title}
             </div>
-            <p className="text-gray-700 text-base">{subText}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate">
+              {subText}
+            </p>
           </div>
           <button
             onClick={() => window.location.assign(buttonHref)}
-            className="inline-block bg-amber-600 hover:bg-brown-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="btn-primary text-sm uppercase tracking-[0.2em]"
           >
             {buttonText}
           </button>
