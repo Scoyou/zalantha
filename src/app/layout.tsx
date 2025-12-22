@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Cinzel, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./ui/navbar";
@@ -60,7 +59,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = headers().get("x-nonce") ?? undefined;
   const structuredData = [
     {
       "@context": "https://schema.org",
@@ -84,7 +82,6 @@ export default function RootLayout({
           <link rel="preconnect" href={cloudfrontOrigin} />
         ) : null}
         <script
-          nonce={nonce}
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(() => {
@@ -98,7 +95,6 @@ export default function RootLayout({
           }}
         />
         <script
-          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
