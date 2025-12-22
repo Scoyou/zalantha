@@ -18,8 +18,34 @@ const displayFont = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Knights of Zalantha",
-  description: "Knights of Zalantha LARP",
+  title: {
+    default: "Knights of Zalantha",
+    template: "%s | Knights of Zalantha",
+  },
+  description:
+    "Knights of Zalantha is a Utah LARP where Utah knights and adventurers explore the realm of Zalantha.",
+  keywords: [
+    "Utah LARP",
+    "Utah knights",
+    "Zalantha",
+    "Knights of Zalantha",
+    "Live Action Role Play",
+    "LARP Utah",
+    "fantasy LARP",
+    "Davis County LARP",
+  ],
+  openGraph: {
+    title: "Knights of Zalantha",
+    description:
+      "Knights of Zalantha is a Utah LARP where Utah knights and adventurers explore the realm of Zalantha.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Knights of Zalantha",
+    description:
+      "Knights of Zalantha is a Utah LARP where Utah knights and adventurers explore the realm of Zalantha.",
+  },
 };
 
 const cloudfrontUrl = process.env.NEXT_PUBLIC_CLOUDFRONT_URL;
@@ -27,6 +53,7 @@ const cloudfrontOrigin = cloudfrontUrl ? new URL(cloudfrontUrl).origin : null;
 const shouldUseSpeedInsights =
   process.env.VERCEL_ENV === "production" ||
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export default function RootLayout({
   children,
@@ -34,6 +61,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const nonce = headers().get("x-nonce") ?? undefined;
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Knights of Zalantha",
+      url: siteUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Knights of Zalantha",
+      url: siteUrl,
+    },
+  ];
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -54,6 +95,13 @@ export default function RootLayout({
     document.documentElement.dataset.theme = theme;
   } catch (e) {}
 })();`,
+          }}
+        />
+        <script
+          nonce={nonce}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
           }}
         />
       </head>
