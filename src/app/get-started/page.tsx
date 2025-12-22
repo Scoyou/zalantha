@@ -48,9 +48,9 @@ export default function GetStarted() {
         <Image
           src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
           alt="A map of Zalantha"
-          className="mx-auto mb-4 h-80 w-80 rounded-[28px] object-contain shadow-2xl md:h-[22rem] md:w-[22rem]"
-          width={400}
-          height={400}
+          className="mx-auto mb-4 w-full rounded-[28px] object-contain shadow-2xl md:h-[22rem] md:w-[22rem]"
+          width={800}
+          height={800}
         />
       </div>
       {isModalOpen && (
@@ -59,7 +59,7 @@ export default function GetStarted() {
           onClick={closeModal}
         >
           <div
-            className="surface-panel surface-panel--deep rounded-[28px] p-5"
+            className="surface-panel surface-panel--deep mx-4 w-full max-w-3xl rounded-[28px] p-5"
             onClick={(e) => e.stopPropagation()}
           >
             <button className="btn-primary mb-4 text-xs uppercase tracking-[0.2em]" onClick={closeModal}>
@@ -68,9 +68,9 @@ export default function GetStarted() {
             <Image
               src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
               alt="A map of Zalantha"
-              className="rounded-[22px] object-contain"
-              width={800}
-              height={800}
+              className="w-full rounded-[22px] object-contain"
+              width={1200}
+              height={1200}
             />
           </div>
         </div>

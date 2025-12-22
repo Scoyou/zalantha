@@ -78,7 +78,7 @@ export default function Contact() {
         the form below. We&apos;ll get back to you as soon as we can.
       </p>
 
-      <form ref={form} onSubmit={sendEmail} className="mx-auto max-w-md">
+      <form ref={form} onSubmit={sendEmail} className="mx-auto w-full md:max-w-md">
         <div className="mb-4">
           <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
             Name
