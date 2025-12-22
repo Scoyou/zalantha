@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Cinzel, Space_Grotesk } from "next/font/google";
+import { Cinzel, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./ui/navbar";
 import { Footer } from "./ui/footer";
 import Head from "next/head";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import PageTransition from "./ui/page-transition";
 
-
-const bodyFont = Space_Grotesk({
+const bodyFont = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
 });
 const displayFont = Cinzel({
@@ -31,9 +32,9 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className={`${bodyFont.variable} ${displayFont.variable} font-sans`}>
+      <body className={`${bodyFont.variable} ${displayFont.variable}`}>
         <Navbar />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>

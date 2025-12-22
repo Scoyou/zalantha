@@ -32,13 +32,13 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-40 border-b border-brass/20 bg-night/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3">
-        <ul className="flex flex-wrap justify-center gap-4 text-sm font-semibold uppercase tracking-[0.2em] text-brass font-display">
+    <nav className="sticky top-0 z-40 border-b border-brass/40 bg-parchment/80 backdrop-blur-xl shadow-[0_12px_30px_rgba(120,98,86,0.18)]">
+      <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-4">
+        <ul className="flex flex-wrap justify-center gap-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink font-display">
         <li>
           <Link
             href="/"
-            className="transition-colors duration-300 hover:text-amber-100"
+            className="transition-colors duration-300 hover:text-ember"
           >
             Home
           </Link>
@@ -46,7 +46,7 @@ export const Navbar = () => {
         <li>
           <Link
             href="/rules"
-            className="transition-colors duration-300 hover:text-amber-100"
+            className="transition-colors duration-300 hover:text-ember"
           >
             Rules
           </Link>
@@ -54,7 +54,7 @@ export const Navbar = () => {
         <li>
           <Link
             href="/contact"
-            className="transition-colors duration-300 hover:text-amber-100"
+            className="transition-colors duration-300 hover:text-ember"
           >
             Contact
           </Link>
@@ -62,7 +62,7 @@ export const Navbar = () => {
         <li className="relative">
           <a
             href="#"
-            className="transition-colors duration-300 hover:text-amber-100"
+            className="transition-colors duration-300 hover:text-ember"
             onClick={toggleDropdown}
           >
             Get Started
@@ -70,9 +70,9 @@ export const Navbar = () => {
           {isOpen && (
             <div
               ref={dropdownRef}
-              className="absolute left-1/2 top-10 w-52 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/60 bg-white/90 shadow-xl backdrop-blur animate-fade-in"
+              className="absolute left-1/2 top-12 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/70 bg-mapParchment/95 shadow-xl backdrop-blur animate-fade-in"
             >
-              <ul className="divide-y divide-stone-200 text-xs font-semibold uppercase tracking-[0.18em] text-slate">
+              <ul className="divide-y divide-amber-100/50 text-xs font-semibold uppercase tracking-[0.18em] text-ink/80">
                 <li>
                   <Link
                     href="/get-started"

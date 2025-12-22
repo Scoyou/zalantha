@@ -80,7 +80,7 @@ export default function Contact() {
 
       <form ref={form} onSubmit={sendEmail} className="mx-auto max-w-md">
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist/80">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
             Name
           </label>
           <input
@@ -94,7 +94,7 @@ export default function Contact() {
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist/80">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
             Email
           </label>
           <input
@@ -108,7 +108,7 @@ export default function Contact() {
         </div>
 
         <div className="mb-4">
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist/80">
+          <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist">
             Message
           </label>
           <textarea
@@ -130,7 +130,7 @@ export default function Contact() {
           </button>
         </div>
       </form>
-      <p className="text-center text-sm text-mist/80">
+      <p className="text-center text-sm text-mist">
         Or email us directly at heloksrising@zalantha.com
       </p>
       <ContactModal isOpen={showModal} onClose={closeModal} />

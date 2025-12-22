@@ -19,7 +19,7 @@ export default function CharacterSheet() {
           >
             <div className="group">
               <Image
-                src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/character_sheet.jpg`}
+                src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalanthacharsheetv1.png`}
                 alt="A photo of a scroll"
                 className="w-screen rounded-[24px] border border-white/60 object-contain shadow-2xl lg:w-full"
                 priority

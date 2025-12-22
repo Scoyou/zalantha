@@ -33,7 +33,7 @@ function RaceCard({
 
       <div className="flex flex-col justify-center gap-3 bg-mist/80 p-6 md:w-2/3">
         <h2 className="font-display text-2xl text-ink">{title}</h2>
-        <p className="text-sm leading-relaxed text-ink/70">{content}</p>
+        <p className="text-sm leading-relaxed text-ink/80">{content}</p>
       </div>
     </div>
   );

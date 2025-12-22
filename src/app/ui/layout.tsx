@@ -7,10 +7,9 @@ export default function Layout({
 }) {
   const panelClasses =
     variant === "dark"
-      ? "surface-panel surface-panel--night"
-      : "surface-panel surface-panel--deep";
-  const contentClasses =
-    variant === "dark" ? "text-mist/85" : "text-ink/80";
+      ? "surface-panel surface-panel--night ornate-frame ornate-frame--night"
+      : "surface-panel surface-panel--deep ornate-frame";
+  const contentClasses = variant === "dark" ? "text-mist" : "text-ink/90";
 
   return (
     <div className="relative min-h-screen px-6 py-16">

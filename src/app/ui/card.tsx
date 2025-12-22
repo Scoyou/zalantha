@@ -32,7 +32,7 @@ const Card = ({
             <div className="font-display text-xl tracking-wide text-ink">
               {title}
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-ink/70">
+            <p className="mt-3 text-sm leading-relaxed text-ink/80">
               {subText}
             </p>
           </div>
