@@ -43,7 +43,7 @@ export default function Home() {
       </section>
 
       <section className="px-4 pb-16 md:px-6">
-        <div className="surface-panel surface-panel--deep ornate-frame mx-auto w-full max-w-5xl rounded-2xl px-5 py-10 text-center animate-rise-in md:rounded-[32px] md:px-8 md:py-12">
+        <div className="surface-panel surface-panel--deep ornate-frame about-panel relative z-10 mx-auto w-full max-w-5xl rounded-2xl px-5 py-10 text-center animate-rise-in md:rounded-[32px] md:px-8 md:py-12">
           <h1 className="text-3xl text-ink">About Us</h1>
           <p className="mt-4 text-sm leading-relaxed text-ink/85 md:text-base">
             We are a high-fantasy Live Action Role Play (LARP) game based in

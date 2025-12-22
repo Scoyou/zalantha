@@ -3,7 +3,6 @@ import { Cinzel, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./ui/navbar";
 import { Footer } from "./ui/footer";
-import Head from "next/head";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PageTransition from "./ui/page-transition";
 
@@ -29,9 +28,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  try {
+    const stored = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
+    document.documentElement.dataset.theme = theme;
+  } catch (e) {}
+})();`,
+          }}
+        />
+      </head>
       <body className={`${bodyFont.variable} ${displayFont.variable}`}>
         <Navbar />
         <PageTransition>{children}</PageTransition>
