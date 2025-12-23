@@ -407,7 +407,7 @@ export default function BackendClient() {
           <div className="flex flex-wrap gap-3">
             {userName ? (
               <>
-                <div className="rounded-full border border-ink/20 bg-parchment/70 px-4 py-2 text-xs uppercase tracking-[0.25em] text-ink/80">
+                <div className="rounded-full border border-ink/20 bg-parchment/70 px-4 py-2 text-xs uppercase tracking-[0.25em] text-[#1f140f]">
                   Signed in as {userName}
                 </div>
                 <button

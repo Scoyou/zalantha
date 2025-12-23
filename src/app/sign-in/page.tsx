@@ -282,7 +282,7 @@ export default function SignInPage() {
             ) : null}
 
             {userName ? (
-              <div className="rounded-2xl border border-ink/10 bg-parchment/70 p-4 text-sm text-ink/80">
+              <div className="rounded-2xl border border-ink/10 bg-parchment/70 p-4 text-sm">
                 Signed in as <span className="font-semibold">{userName}</span>.
                 <div className="mt-4 flex flex-wrap gap-3">
                   <Link
