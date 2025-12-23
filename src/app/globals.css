@@ -42,6 +42,10 @@ body {
     linear-gradient(135deg, rgba(255, 250, 244, 0.75), rgba(240, 228, 210, 0.35));
 }
 
+p {
+  font-size: 1.125rem;
+}
+
 .site-main {
   min-height: calc(100vh - 8rem);
   animation: site-fade 0.5s ease both;
