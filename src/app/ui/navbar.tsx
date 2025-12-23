@@ -291,6 +291,16 @@ export const Navbar = () => {
                 Character Sheet
               </Link>
             </li>
+            <li>
+              <Link
+                href="/backend"
+                className="transition-colors duration-300 hover:text-ember"
+                onClick={closeMobileMenu}
+              >
+                Saved Characters
+              </Link>
+            </li>
+            
           </ul>
         </div>
       )}

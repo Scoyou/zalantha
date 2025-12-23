@@ -15,10 +15,13 @@ function RaceCard({
   invertedImagePos?: boolean;
 }) {
   const containerClasses = `theme-race-card flex flex-col ${invertedImagePos ? "md:flex-row-reverse" : "md:flex-row"} overflow-hidden rounded-[26px] border border-white/60 bg-white/80 shadow-xl backdrop-blur md:mt-6`;
+  const imageClasses = `relative md:w-1/3 overflow-hidden rounded-t-[26px] ${
+    invertedImagePos ? "md:rounded-none md:rounded-r-[26px]" : "md:rounded-none md:rounded-l-[26px]"
+  }`;
 
   return (
     <div className={containerClasses}>
-      <div className="relative md:w-1/3">
+      <div className={imageClasses}>
         <Image
           src={imageUrl}
           alt={altText}
