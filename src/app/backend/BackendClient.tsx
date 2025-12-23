@@ -14,6 +14,7 @@ import {
   fetchCharacters,
   type Character,
 } from "@/lib/characterApi";
+import { clearStoredTokens, getLocalUser } from "@/lib/authSession";
 
 const getCharacterStorageKey = (userId: string) =>
   `zalantha.characters.${userId}`;
@@ -78,6 +79,14 @@ export default function BackendClient() {
   const missingCharacterConfig = characterApiConfigSummary.missing;
 
   useEffect(() => {
+    const localUser = getLocalUser();
+    if (localUser) {
+      setUserId(localUser.userId);
+      setUserName(localUser.name ?? localUser.email ?? localUser.userId);
+      setStatus("ready");
+      return;
+    }
+
     if (!isConfigured) {
       setStatus("ready");
       return;
@@ -174,7 +183,11 @@ export default function BackendClient() {
 
   const handleLogout = async () => {
     setStatus("loading");
-    await signOut();
+    clearStoredTokens();
+    if (isConfigured) {
+      configureAmplify();
+      await signOut();
+    }
     setUserName(null);
     setUserId(null);
     setCharacters([]);
@@ -400,13 +413,18 @@ export default function BackendClient() {
               </>
             ) : (
               <>
-                <button
+                <Link
+                  href="/sign-in"
                   className="btn-primary btn-primary--shimmer text-xs uppercase tracking-[0.2em]"
-                  onClick={handleLogin}
-                  disabled={status === "loading"}
                 >
                   Sign in
-                </button>
+                </Link>
+                <Link
+                  href="/sign-in?mode=sign-up"
+                  className="rounded-full border border-ink/20 px-4 py-2 text-xs uppercase tracking-[0.2em] text-ink/70 transition hover:border-ink/50"
+                >
+                  Sign up
+                </Link>
                 {/* <button
                   className="btn-primary text-xs uppercase tracking-[0.2em]"
                   onClick={handleGoogleLogin}

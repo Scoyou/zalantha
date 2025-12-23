@@ -1,4 +1,4 @@
-import { fetchAuthSession } from "aws-amplify/auth";
+import { getAuthToken } from "@/lib/authSession";
 
 export type Character = {
   id: string;
@@ -29,17 +29,6 @@ export const characterApiConfigSummary = {
 };
 
 const getApiBaseUrl = () => characterApiConfig.baseUrl.replace(/\/+$/, "");
-
-const getAuthToken = async () => {
-  const session = await fetchAuthSession();
-  const token = session.tokens?.idToken?.toString();
-
-  if (!token) {
-    throw new Error("Unable to load a Cognito id token for API requests.");
-  }
-
-  return token;
-};
 
 export const fetchCharacters = async (): Promise<Character[]> => {
   const baseUrl = getApiBaseUrl();
