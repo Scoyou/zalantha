@@ -351,10 +351,10 @@ export default function BackendClient() {
           <h1 className="mt-3 text-3xl text-ink md:text-4xl">
             Saved Characters
           </h1>
-          <p className="mt-3 text-sm text-ink/80 md:text-base">
+          {!userId && <p className="mt-3 text-sm text-ink/80 md:text-base">
             Sign in with your Knights of Zalantha account to review the
             characters you&apos;ve stored for upcoming campaigns.
-          </p>
+          </p>}
         </div>
 
         {!isConfigured ? (
