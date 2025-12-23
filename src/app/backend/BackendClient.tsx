@@ -62,6 +62,7 @@ export default function BackendClient() {
   const [isSaving, setIsSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editDraft, setEditDraft] = useState<Character | null>(null);
+  const [isLoadingCharacters, setIsLoadingCharacters] = useState(false);
   const [newCharacter, setNewCharacter] = useState<Character>({
     id: "",
     name: "",
@@ -127,12 +128,14 @@ export default function BackendClient() {
     if (!userId) {
       setCharacters([]);
       setCharacterError(null);
+      setIsLoadingCharacters(false);
       return;
     }
 
     let isCancelled = false;
 
     const loadCharacters = async () => {
+      setIsLoadingCharacters(true);
       setCharacterError(null);
       try {
         if (isCharacterApiConfigured) {
@@ -154,6 +157,10 @@ export default function BackendClient() {
               : "Unable to load characters from the API.",
           );
           setCharacters(readCharacters(userId));
+        }
+      } finally {
+        if (!isCancelled) {
+          setIsLoadingCharacters(false);
         }
       }
     };
@@ -544,7 +551,23 @@ export default function BackendClient() {
             </div>
           </form>
 
-          {characters.length > 0 ? (
+          {isLoadingCharacters ? (
+            <div className="grid gap-4 md:grid-cols-2">
+              {Array.from({ length: 4 }).map((_, index) => (
+                <div
+                  key={`skeleton-${index}`}
+                  className="rounded-2xl border border-ink/10 bg-parchment/60 p-5 shadow-[0_16px_40px_rgba(58,42,36,0.12)]"
+                >
+                  <div className="space-y-4 blur-[1px]">
+                    <div className="h-6 w-2/3 rounded-full bg-ink/10" />
+                    <div className="h-4 w-1/2 rounded-full bg-ink/10" />
+                    <div className="h-16 w-full rounded-2xl bg-ink/10" />
+                    <div className="h-4 w-1/3 rounded-full bg-ink/10" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : characters.length > 0 ? (
             <div className="grid gap-4 md:grid-cols-2">
               {characters.map((character) => (
                 <div
