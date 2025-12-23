@@ -72,3 +72,40 @@ export const signUpWithAuthApi = async (
     );
   }
 };
+
+export const requestPasswordReset = async (email: string) => {
+  const baseUrl = getApiBaseUrl();
+  const response = await fetch(`${baseUrl}/reset/request`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Unable to request password reset (${response.status} ${response.statusText}).`,
+    );
+  }
+};
+
+export const confirmPasswordReset = async (
+  token: string,
+  newPassword: string,
+) => {
+  const baseUrl = getApiBaseUrl();
+  const response = await fetch(`${baseUrl}/reset/confirm`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ token, newPassword }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Unable to reset password (${response.status} ${response.statusText}).`,
+    );
+  }
+};

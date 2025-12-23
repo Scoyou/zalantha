@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { fetchAuthSession, getCurrentUser, signOut } from "aws-amplify/auth";
-import { authApiConfigSummary, signInWithAuthApi, signUpWithAuthApi } from "@/lib/authApi";
+import {
+  authApiConfigSummary,
+  requestPasswordReset,
+  signInWithAuthApi,
+  signUpWithAuthApi,
+} from "@/lib/authApi";
 import {
   clearStoredTokens,
   getLocalUser,
@@ -17,7 +22,7 @@ export default function SignInPage() {
   const [userName, setUserName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const [mode, setMode] = useState<"sign-in" | "sign-up">("sign-in");
+  const [mode, setMode] = useState<"sign-in" | "sign-up" | "reset">("sign-in");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,6 +58,9 @@ export default function SignInPage() {
     const modeParam = searchParams.get("mode");
     if (modeParam === "sign-up") {
       setMode("sign-up");
+    }
+    if (modeParam === "reset") {
+      setMode("reset");
     }
   }, [searchParams]);
 
@@ -168,6 +176,35 @@ export default function SignInPage() {
     }
   };
 
+  const handleRequestReset = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!isAuthApiConfigured) {
+      return;
+    }
+
+    if (!email.trim()) {
+      setError("Enter your email to request a reset link.");
+      return;
+    }
+
+    setStatus("loading");
+    setError(null);
+    setNotice(null);
+
+    try {
+      await requestPasswordReset(email.trim());
+      setNotice("Reset link sent. Check your email.");
+    } catch (caught) {
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "Unable to request a reset code.",
+      );
+    } finally {
+      setStatus("ready");
+    }
+  };
+
   const handleSignOut = async () => {
     clearStoredTokens();
     if (isConfigured) {
@@ -178,51 +215,31 @@ export default function SignInPage() {
 
   return (
     <div className="relative overflow-hidden px-6 py-16 md:px-10">
+      <Link
+        href="/backend"
+        className="absolute left-6 top-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ink/70 transition hover:text-ink md:left-10 md:top-8"
+      >
+        <span aria-hidden="true">←</span>
+        Back
+      </Link>
       <div className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-emerald-200/40 blur-[90px]" />
       <div className="pointer-events-none absolute right-10 top-10 h-72 w-72 rounded-full bg-rose-200/40 blur-[110px]" />
       <div className="pointer-events-none absolute bottom-10 left-1/2 h-48 w-80 -translate-x-1/2 rounded-full bg-indigo-200/40 blur-[110px]" />
 
-      <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-ink/70">
-            Knights of Zalantha
-          </p>
-          <h1 className="text-4xl text-ink md:text-5xl">
-            Enter the Adventurer Archive
-          </h1>
-          <p className="text-base text-ink/80 md:text-lg">
-            Sign in with your guild credentials to unlock saved characters,
-            campaign notes, and the living chronicle of Zalantha.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/backend"
-              className="btn-primary text-[11px] uppercase tracking-[0.3em]"
-            >
-              Visit Archive
-            </Link>
-            <Link
-              href="/"
-              className="rounded-full border border-ink/20 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-ink/70 transition hover:border-ink/50"
-            >
-              Return Home
-            </Link>
-          </div>
-        </div>
-
-        <div className="surface-panel surface-panel--deep rounded-3xl p-6 md:p-8">
+      <div className="mx-auto flex max-w-lg flex-col items-center gap-6">
+        <div className="surface-panel surface-panel--deep w-full rounded-3xl p-6 md:p-8">
           <div className="space-y-5">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-ink/70">
                 Secure Access
               </p>
               <h2 className="mt-3 text-2xl text-ink">
-                {mode === "sign-in" ? "Welcome back" : "Join the guild"}
+                {mode === "sign-in"
+                  ? "Welcome back"
+                  : mode === "sign-up"
+                    ? "Join the guild"
+                    : "Reset your password"}
               </h2>
-              <p className="mt-2 text-sm text-ink/75">
-                We use AWS Cognito to keep your account safe while you explore
-                the realm.
-              </p>
             </div>
 
             {!isConfigured ? (
@@ -286,7 +303,13 @@ export default function SignInPage() {
             ) : (
               <form
                 className="space-y-4"
-                onSubmit={mode === "sign-in" ? handleSignIn : handleSignUp}
+                onSubmit={
+                  mode === "sign-in"
+                    ? handleSignIn
+                    : mode === "sign-up"
+                      ? handleSignUp
+                      : handleRequestReset
+                }
               >
                 {mode === "sign-up" ? (
                   <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
@@ -311,29 +334,33 @@ export default function SignInPage() {
                     required
                   />
                 </label>
-                <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
-                  Password
-                  <input
-                    className="mt-2 rounded-xl border border-ink/10 bg-parchment/80 px-3 py-2 text-sm text-ink"
-                    type="password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    placeholder="Enter your password"
-                    required
-                  />
-                  {mode === "sign-up" ? (
-                    <div className="mt-3 space-y-1 text-[11px] uppercase tracking-[0.2em] text-ink/50">
-                      {passwordRules.map((rule) => (
-                        <div
-                          key={rule.label}
-                          className={rule.ok ? "text-emerald-700" : "text-ink/50"}
-                        >
-                          {rule.ok ? "[x]" : "[ ]"} {rule.label}
-                        </div>
-                      ))}
-                    </div>
-                  ) : null}
-                </label>
+                {mode !== "reset" ? (
+                  <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
+                    Password
+                    <input
+                      className="mt-2 rounded-xl border border-ink/10 bg-parchment/80 px-3 py-2 text-sm text-ink"
+                      type="password"
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
+                      placeholder="Enter your password"
+                      required
+                    />
+                    {mode === "sign-up" ? (
+                      <div className="mt-3 space-y-1 text-[11px] uppercase tracking-[0.2em] text-ink/50">
+                        {passwordRules.map((rule) => (
+                          <div
+                            key={rule.label}
+                            className={
+                              rule.ok ? "text-emerald-700" : "text-ink/50"
+                            }
+                          >
+                            {rule.ok ? "[x]" : "[ ]"} {rule.label}
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+                  </label>
+                ) : null}
                 {mode === "sign-up" ? (
                   <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                     Confirm Password
@@ -352,36 +379,78 @@ export default function SignInPage() {
                     </span>
                   </label>
                 ) : null}
-                <button
-                  className="btn-primary btn-primary--shimmer w-full text-[11px] uppercase tracking-[0.3em]"
-                  type="submit"
-                  disabled={status === "loading" || !isAuthApiConfigured}
-                >
-                  {status === "loading"
-                    ? "Opening Secure Portal..."
-                    : mode === "sign-in"
-                      ? "Sign In"
-                      : "Create Account"}
-                </button>
+                {mode === "reset" ? (
+                  <button
+                    className="btn-primary w-full text-[11px] uppercase tracking-[0.3em]"
+                    type="submit"
+                    disabled={status === "loading" || !isAuthApiConfigured}
+                  >
+                    {status === "loading"
+                      ? "Sending..."
+                      : "Email Reset Link"}
+                  </button>
+                ) : (
+                  <button
+                    className="btn-primary btn-primary--shimmer w-full text-[11px] uppercase tracking-[0.3em]"
+                    type="submit"
+                    disabled={status === "loading" || !isAuthApiConfigured}
+                  >
+                    {status === "loading"
+                      ? "Opening Secure Portal..."
+                      : mode === "sign-in"
+                        ? "Sign In"
+                        : "Create Account"}
+                  </button>
+                )}
               </form>
             )}
 
-            <button
-              className="text-xs uppercase tracking-[0.3em] text-ink/50 transition hover:text-ink"
-              type="button"
-              onClick={() => {
-                setMode((prev) =>
-                  prev === "sign-in" ? "sign-up" : "sign-in",
-                );
-                setError(null);
-                setNotice(null);
-              }}
-              disabled={status === "loading"}
-            >
-              {mode === "sign-in"
-                ? "New to Zalantha? Create an account."
-                : "Already registered? Sign in instead."}
-            </button>
+            <div className="flex flex-col gap-3 pt-1">
+              <button
+                className="text-xs uppercase tracking-[0.3em] text-ink/70 transition hover:text-ink"
+                type="button"
+                onClick={() => {
+                  setMode((prev) =>
+                    prev === "sign-in" ? "sign-up" : "sign-in",
+                  );
+                  setError(null);
+                  setNotice(null);
+                }}
+                disabled={status === "loading"}
+              >
+                {mode === "sign-in"
+                  ? "New to Zalantha? Create an account."
+                  : "Already registered? Sign in instead."}
+              </button>
+
+              {mode !== "reset" ? (
+                <button
+                  className="text-xs uppercase tracking-[0.3em] text-ink/70 transition hover:text-ink"
+                  type="button"
+                  onClick={() => {
+                    setMode("reset");
+                    setError(null);
+                    setNotice(null);
+                  }}
+                  disabled={status === "loading"}
+                >
+                  Forgot password?
+                </button>
+              ) : (
+                <button
+                  className="text-xs uppercase tracking-[0.3em] text-ink/70 transition hover:text-ink"
+                  type="button"
+                  onClick={() => {
+                    setMode("sign-in");
+                    setError(null);
+                    setNotice(null);
+                  }}
+                  disabled={status === "loading"}
+                >
+                  Back to sign in
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
