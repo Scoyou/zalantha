@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { fetchAuthSession, getCurrentUser, signOut } from "aws-amplify/auth";
@@ -17,7 +17,7 @@ import {
 } from "@/lib/authSession";
 import { cognitoConfigSummary, configureAmplify } from "@/lib/cognito";
 
-export default function SignInPage() {
+function SignInContent() {
   const [status, setStatus] = useState<"idle" | "loading" | "ready">("idle");
   const [userName, setUserName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -455,5 +455,13 @@ export default function SignInPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<div className="px-6 py-16 md:px-10" />}>
+      <SignInContent />
+    </Suspense>
   );
 }
