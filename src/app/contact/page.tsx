@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef, FormEvent } from "react";
-import { BackgroundImage } from "../ui/background-image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import emailjs from "@emailjs/browser";
 import { ContactModal } from "../ui/contact-modal";
 interface FormData {
@@ -65,58 +64,68 @@ export default function Contact() {
   };
 
   return (
-    <Layout>
-      <BackgroundImage
-        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/contact_us_background.webp`}
-        altText="Background - a pencil drawing of people on horseback riding away from a castle"
-      />
+    <Layout variant="dark" className="themed-panel">
       <div className="items-center text-center">
-        <h1 className="text-2xl font-bold mb-2">Contact Us</h1>
+        <h1 className="text-3xl text-mist">Contact Us</h1>
       </div>
       <p>
         Want to join an event, have questions, or just want to say hi? Fill out
         the form below. We&apos;ll get back to you as soon as we can.
       </p>
 
-      <form ref={form} onSubmit={sendEmail} className="mx-auto max-w-md">
+      <form ref={form} onSubmit={sendEmail} className="mx-auto w-full md:max-w-md">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label
+            htmlFor="fromName"
+            className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
+          >
             Name
           </label>
           <input
             type="text"
+            id="fromName"
             name="fromName"
             value={formData.fromName}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
+            autoComplete="name"
+            className="w-full rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm text-ink shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label
+            htmlFor="fromEmail"
+            className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
+          >
             Email
           </label>
           <input
             type="email"
+            id="fromEmail"
             name="fromEmail"
             value={formData.fromEmail}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
+            autoComplete="email"
+            className="w-full rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm text-ink shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label
+            htmlFor="message"
+            className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
+          >
             Message
           </label>
           <textarea
+            id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
+            className="w-full rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm text-ink shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40"
             required
           ></textarea>
         </div>
@@ -124,13 +133,15 @@ export default function Contact() {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-amber-200"
+            className="btn-primary btn-primary--shimmer text-xs uppercase tracking-[0.3em]"
           >
             Submit
           </button>
         </div>
       </form>
-      <p>Or email us directly at heloksrising@zalantha.com</p>
+      <p className="text-center text-sm text-mist">
+        Or email us directly at heloksrising@zalantha.com
+      </p>
       <ContactModal isOpen={showModal} onClose={closeModal} />
     </Layout>
   );

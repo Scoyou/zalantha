@@ -1,27 +1,19 @@
 import Image from "next/legacy/image";
 import { BackgroundImage } from "../ui/background-image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 
 export default function History() {
   return (
-    <Layout>
+    <Layout variant="dark">
       <BackgroundImage
         altText="Background - two titans clashing"
         imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_background.webp`}
       />
       <div className="items-center text-center">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/history_thumbnail.webp`}
-          alt="A photo of a scroll"
-          className="mx-auto mb-4 w-80 h-80 object-contain"
-          width={400}
-          height={400}
-          priority
-        />
-        <h1 className="text-2xl font-bold mb-2">History</h1>
+        <h1 className="text-3xl text-mist">History</h1>
       </div>
 
-      <h2>
+      <h2 className="text-2xl text-mist">
         <strong>World Creation</strong>
       </h2>
       <p>
@@ -50,7 +42,7 @@ export default function History() {
         ago, but that, as they say, is a story for another time.
       </p>
       <br />
-      <h2>
+      <h2 className="text-2xl text-mist">
         <strong>How you fit into the world</strong>
       </h2>
       <p>

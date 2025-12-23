@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/legacy/image";
-import { BackgroundImage } from "../ui/background-image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import Link from "next/link";
 
 export default function GetStarted() {
@@ -13,21 +12,9 @@ export default function GetStarted() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <Layout>
-      <BackgroundImage
-        altText="Background - a tomb with Egyptian statues in front of it"
-        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/getting_started_background.webp`}
-      />
+    <Layout variant="dark" className="themed-panel">
       <div className="items-center text-center">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/tome_getting_started.webp`}
-          alt="A photo of a scroll"
-          className="mx-auto mb-4 w-80 h-80 object-contain"
-          width={400}
-          height={400}
-          priority
-        />
-        <h1 className="text-2xl font-bold mb-2">Get Started</h1>
+        <h1 className="text-3xl text-mist">Get Started</h1>
       </div>
 
       <p>
@@ -47,38 +34,43 @@ export default function GetStarted() {
         Our adventure takes place in the world of Zalantha. A newly developed
         realm full of magic. You can learn more about the creation of our world
         on the{" "}
-        <Link className="text-orange-900 hover:underline" href="/history">
+        <Link className="link-ember-light" href="/history">
           World History page
         </Link>
         .
       </p>
-      <div onClick={openModal} className="cursor-pointer">
+      <button
+        type="button"
+        onClick={openModal}
+        className="cursor-pointer items-center text-center"
+        aria-label="Open Zalantha map"
+      >
         <Image
           src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
           alt="A map of Zalantha"
-          className="mx-auto mb-4 lg:w-2/5 lg:h-2/5 object-contain w-80 h-80"
-          width={400}
-          height={400}
+          className="mx-auto mb-4 w-full rounded-[28px] object-contain shadow-2xl md:h-[22rem] md:w-[22rem]"
+          width={800}
+          height={800}
         />
-      </div>
+      </button>
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-night/60 backdrop-blur-sm"
           onClick={closeModal}
         >
           <div
-            className="modal-content bg-parchment p-5 rounded-lg"
+            className="surface-panel surface-panel--deep mx-4 w-full max-w-3xl rounded-[28px] p-5"
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="float-right" onClick={closeModal}>
+            <button className="btn-primary mb-4 text-xs uppercase tracking-[0.2em]" onClick={closeModal}>
               Close
             </button>
             <Image
               src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/zalantha_map.jpeg`}
               alt="A map of Zalantha"
-              className="object-contain"
-              width={800}
-              height={800}
+              className="w-full rounded-[22px] object-contain"
+              width={1200}
+              height={1200}
             />
           </div>
         </div>
@@ -129,7 +121,7 @@ export default function GetStarted() {
       </div>
       <p>
         You can find more details on each race on the{" "}
-        <Link className="text-orange-900 hover:underline" href="/factions">
+        <Link className="link-ember-light" href="/factions">
           Factions page.
         </Link>
       </p>
@@ -171,18 +163,15 @@ export default function GetStarted() {
       </div>
       <p>
         Once you have created your character and filled out your{" "}
-        <Link
-          href="/character-sheet"
-          className="text-orange-900 hover:underline"
-        >
+        <Link href="/character-sheet" className="link-ember-light">
           character sheet
         </Link>
-        , make sure to review the rules on the{" "}
-        <Link href="/rules" className="text-orange-900 hover:underline">
+, make sure to review the rules on the{" "}
+        <Link href="/rules" className="link-ember-light">
           Rules page
         </Link>
         . Then, join us for your first event! Have questions? Complete our{" "}
-        <Link href="/contact" className="text-orange-900 hover:underline">
+        <Link href="/contact" className="link-ember-light">
           Contact Form
         </Link>{" "}
         and we&apos;ll get back to you as soon as possible.

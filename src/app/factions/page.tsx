@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import Layout from "../ui/layout";
+import Layout from "../ui/layout-panel";
 import RaceCard from "../ui/race-card";
 import { BackgroundImage } from "../ui/background-image";
 export default function Factions() {
@@ -10,7 +10,7 @@ export default function Factions() {
         imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/battle_background.webp`}
       />
       <div className="items-center text-center">
-        <h1 className="text-2xl font-bold mb-2">
+        <h1 className="mb-6 text-3xl text-ink">
           Races and Factions of Zalantha
         </h1>
         <RaceCard

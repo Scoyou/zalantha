@@ -22,3 +22,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Character API (AWS serverless)
+
+Character data is loaded from an AWS API backed by a serverless database. Configure:
+
+- `NEXT_PUBLIC_CHARACTER_API_BASE_URL` - API Gateway base URL (ex: `https://abc123.execute-api.us-east-1.amazonaws.com/prod`)
+
+Expected API shape:
+
+- `GET /characters` -> `{ "items": Character[] }`
+- `PUT /characters` -> `{ "items": Character[] }` (body)
+
+Use API Gateway + Lambda + DynamoDB (or AppSync + DynamoDB) with a Cognito
+authorizer so the app can pass the Cognito id token in the `Authorization`
+header.

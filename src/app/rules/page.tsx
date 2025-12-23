@@ -1,22 +1,10 @@
 import Image from "next/legacy/image";
-import Layout from "../ui/layout";
-import { BackgroundImage } from "../ui/background-image";
+import Layout from "../ui/layout-panel";
 export default function Rules() {
   return (
-    <Layout>
-      <BackgroundImage
-        imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/contact_us_background.webp`}
-        altText="Background - a pencil drawing of people on horseback riding away from a castle"
-      />
+    <Layout variant="dark" className="themed-panel">
       <div className="items-center text-center">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/rules_background.webp`}
-          alt="A photo of a scroll"
-          className="mx-auto mb-4 w-80 h-80 object-contain"
-          width={400}
-          height={400}
-        />
-        <h1 className="text-2xl font-bold mb-2">Rules</h1>
+        <h1 className="text-3xl text-mist">Rules</h1>
       </div>
 
       <p>
