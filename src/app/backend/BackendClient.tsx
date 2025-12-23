@@ -108,11 +108,11 @@ export default function BackendClient() {
         const currentUser = await getCurrentUser();
         setUserId(currentUser.userId ?? currentUser.username);
         const session = await fetchAuthSession();
-        const displayName =
+        const rawDisplayName =
           session.tokens?.idToken?.payload?.name ??
           session.tokens?.idToken?.payload?.email ??
           currentUser.username;
-        setUserName(displayName);
+        setUserName(String(rawDisplayName));
       } catch (caught) {
         setUserId(null);
         setUserName(null);
