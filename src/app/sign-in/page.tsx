@@ -230,9 +230,6 @@ function SignInContent() {
         <div className="surface-panel surface-panel--deep w-full rounded-3xl p-6 md:p-8">
           <div className="space-y-5">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-ink/70">
-                Secure Access
-              </p>
               <h2 className="mt-3 text-2xl text-ink">
                 {mode === "sign-in"
                   ? "Welcome back"
