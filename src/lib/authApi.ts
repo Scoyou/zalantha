@@ -74,8 +74,7 @@ export const signUpWithAuthApi = async (
 };
 
 export const requestPasswordReset = async (email: string) => {
-  const baseUrl = getApiBaseUrl();
-  const response = await fetch(`${baseUrl}/reset/request`, {
+  const response = await fetch(`/api/auth/reset/request`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -94,8 +93,7 @@ export const confirmPasswordReset = async (
   token: string,
   newPassword: string,
 ) => {
-  const baseUrl = getApiBaseUrl();
-  const response = await fetch(`${baseUrl}/reset/confirm`, {
+  const response = await fetch(`/api/auth/reset/confirm`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
