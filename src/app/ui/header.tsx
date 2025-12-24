@@ -43,25 +43,25 @@ export const Header = () => {
           href="#hero-trail-path"
           className="hero-map__trail-steps hero-map__trail-steps--faint"
           mask="url(#hero-trail-mask-faint)"
-          transform="translate(-4 -3)"
+          transform="translate(-3 -2)"
         />
         <use
           href="#hero-trail-path"
-          className="hero-map__trail-steps hero-map__trail-steps--faint"
+          className="hero-map__trail-steps hero-map__trail-steps--faint hero-map__trail-steps--right"
           mask="url(#hero-trail-mask-faint)"
-          transform="translate(4 3)"
+          transform="translate(3 2)"
         />
         <use
           href="#hero-trail-path"
           className="hero-map__trail-steps"
           mask="url(#hero-trail-mask-strong)"
-          transform="translate(-4 -3)"
+          transform="translate(-3 -2)"
         />
         <use
           href="#hero-trail-path"
-          className="hero-map__trail-steps"
+          className="hero-map__trail-steps hero-map__trail-steps--right"
           mask="url(#hero-trail-mask-strong)"
-          transform="translate(4 3)"
+          transform="translate(3 2)"
         />
         
       </svg>

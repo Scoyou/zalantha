@@ -455,6 +455,10 @@ h4 {
   filter: drop-shadow(0 0 6px rgba(217, 163, 155, 0.55));
 }
 
+.hero-map__trail-steps--right {
+  stroke-dashoffset: 0.05;
+}
+
 .hero-map__trail-steps--faint {
   stroke: rgba(217, 163, 155, 0.35);
   stroke-width: 2;
