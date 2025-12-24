@@ -438,6 +438,55 @@ h4 {
   background: linear-gradient(to top, rgba(251, 247, 239, 0.92), rgba(251, 247, 239, 0));
 }
 
+.hero-map__trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+.hero-map__trail-steps {
+  fill: none;
+  stroke: rgba(217, 163, 155, 0.6);
+  stroke-width: 2.6;
+  stroke-dasharray: 0.01 0.09;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(217, 163, 155, 0.55));
+}
+
+.hero-map__trail-steps--faint {
+  stroke: rgba(217, 163, 155, 0.35);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(217, 163, 155, 0.35));
+}
+
+.hero-map__trail-mask {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dashoffset: 1;
+  animation: trail-reveal 30s linear infinite;
+}
+
+.hero-map__trail-mask--strong {
+  stroke-dasharray: 0.22 0.78;
+}
+
+.hero-map__trail-mask--faint {
+  stroke-dasharray: 0.45 0.55;
+}
+
+@keyframes trail-reveal {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
 .sigil-reveal {
   position: relative;
   width: min(70vw, 360px);
@@ -460,6 +509,17 @@ h4 {
   background: radial-gradient(circle at 30% 30%, rgba(204, 196, 183, 0.9), rgba(168, 146, 114, 0.88) 55%, rgba(96, 69, 58, 0.86) 100%);
   box-shadow: 0 40px 80px rgba(26, 20, 18, 0.6), inset 0 0 22px rgba(255, 255, 255, 0.2);
 }
+
+[data-theme="dark"] .hero-map__trail-steps {
+  stroke: rgba(180, 170, 210, 0.65);
+  filter: drop-shadow(0 0 6px rgba(160, 148, 196, 0.55));
+}
+
+[data-theme="dark"] .hero-map__trail-steps--faint {
+  stroke: rgba(180, 170, 210, 0.35);
+  filter: drop-shadow(0 0 6px rgba(160, 148, 196, 0.35));
+}
+
 
 .sigil-reveal__ring {
   position: absolute;
@@ -872,8 +932,13 @@ select:focus-visible {
   .sigil-reveal__mark,
   .sigil-reveal__glint,
   .reveal,
+  .hero-map__trail,
   .site-main {
     animation: none;
+  }
+
+  .hero-map__trail {
+    display: none;
   }
 
   .btn-primary--shimmer::after {

@@ -20,6 +20,51 @@ export const Header = () => {
       </div>
       <div className="absolute inset-0 hero-map__wash"></div>
       <div className="absolute inset-0 hero-map__runes"></div>
+      <svg
+        className="hero-map__trail"
+        viewBox="0 0 1000 600"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <path
+            id="hero-trail-path"
+            d="M 80 480 C 220 420 320 340 440 330 C 560 320 640 250 720 190 C 800 130 900 110 970 80"
+            pathLength="1"
+          />
+          <mask id="hero-trail-mask-strong" maskContentUnits="userSpaceOnUse">
+            <use href="#hero-trail-path" className="hero-map__trail-mask hero-map__trail-mask--strong" />
+          </mask>
+          <mask id="hero-trail-mask-faint" maskContentUnits="userSpaceOnUse">
+            <use href="#hero-trail-path" className="hero-map__trail-mask hero-map__trail-mask--faint" />
+          </mask>
+        </defs>
+        <use
+          href="#hero-trail-path"
+          className="hero-map__trail-steps hero-map__trail-steps--faint"
+          mask="url(#hero-trail-mask-faint)"
+          transform="translate(-4 -3)"
+        />
+        <use
+          href="#hero-trail-path"
+          className="hero-map__trail-steps hero-map__trail-steps--faint"
+          mask="url(#hero-trail-mask-faint)"
+          transform="translate(4 3)"
+        />
+        <use
+          href="#hero-trail-path"
+          className="hero-map__trail-steps"
+          mask="url(#hero-trail-mask-strong)"
+          transform="translate(-4 -3)"
+        />
+        <use
+          href="#hero-trail-path"
+          className="hero-map__trail-steps"
+          mask="url(#hero-trail-mask-strong)"
+          transform="translate(4 3)"
+        />
+        
+      </svg>
       <div className="absolute inset-6 rounded-[36px] border border-white/40 shadow-[0_0_60px_rgba(217,163,155,0.25)] md:inset-10"></div>
       <div className="absolute inset-0 hero-map__vignette"></div>
       <div className="relative z-10 flex h-full items-center justify-center px-6">
