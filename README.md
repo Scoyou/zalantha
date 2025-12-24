@@ -1,12 +1,16 @@
 # Knights of Zalantha
-Website for the Knights of Zalantha LARP. 
+Website for the Knights of Zalantha LARP.
 
-## Dev setup
-Site is hosted on Vercel and using EmailJS for email service. Images are hosted in S3 served via AWS CloudFront.
+## Overview
+- Next.js (App Router) + Tailwind CSS
+- Hosted on Vercel
+- EmailJS for contact form delivery
+- Images hosted in S3 and served via AWS CloudFront
+- Auth API for sign-in and password reset flows
 
-### Getting Started
+## Getting Started
 
-First, fill .env.local with the correct variables.
+Create a `.env.local` with the values below (see Environment Variables).
 
 Then run the development server:
 
@@ -22,7 +26,33 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Character API (AWS serverless)
+## Environment Variables
+
+Required:
+- `NEXT_PUBLIC_CLOUDFRONT_URL` - CloudFront base URL for images
+- `NEXT_PUBLIC_SITE_URL` - Public site URL (used for metadata)
+- `NEXT_PUBLIC_EMAIL_SERVICE_ID` - EmailJS service ID
+- `NEXT_PUBLIC_EMAIL_TEMPLATE_ID` - EmailJS template ID
+- `NEXT_PUBLIC_EMAIL_PUBLIC_KEY` - EmailJS public key
+- `NEXT_PUBLIC_AUTH_API_BASE_URL` - Auth API base URL (see Auth API)
+- `NEXT_PUBLIC_CHARACTER_API_BASE_URL` - Character API base URL (see Character API)
+- `NEXT_PUBLIC_COGNITO_USER_POOL_ID` - Cognito User Pool ID
+- `NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID` - Cognito app client ID
+- `NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID` - Cognito identity pool ID
+- `NEXT_PUBLIC_COGNITO_REGION` - AWS region for Cognito
+
+## Auth API
+
+Used for sign-in, sign-up, and password reset. The client calls Next API routes
+under `/api/auth/*` which proxy to the Auth API to avoid CORS issues.
+
+Expected API shape:
+- `POST /login` -> `{ idToken, accessToken?, refreshToken?, expiresAt? }`
+- `POST /signup`
+- `POST /reset/request`
+- `POST /reset/confirm`
+
+## Character API (AWS serverless)
 
 Character data is loaded from an AWS API backed by a serverless database. Configure:
 
@@ -36,3 +66,8 @@ Expected API shape:
 Use API Gateway + Lambda + DynamoDB (or AppSync + DynamoDB) with a Cognito
 authorizer so the app can pass the Cognito id token in the `Authorization`
 header.
+
+## EmailJS
+
+The contact form posts via EmailJS. Provide service/template/public key values
+in `.env.local`.
