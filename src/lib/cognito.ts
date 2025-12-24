@@ -40,6 +40,7 @@ export const configureAmplify = () => {
             redirectSignIn: [cognitoConfig.redirectSignIn],
             redirectSignOut: [cognitoConfig.redirectSignOut],
             responseType: "code",
+            providers: ["Google"],
           },
         },
       },

@@ -426,19 +426,43 @@ export default function BackendClient() {
                 >
                   Sign in
                 </Link>
+                <button
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-parchment/90 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-ink/80 transition hover:border-ink/50"
+                  onClick={handleGoogleLogin}
+                  disabled={status === "loading"}
+                  type="button"
+                  aria-label="Sign in with Google"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 48 48"
+                    className="h-4 w-4"
+                  >
+                    <path
+                      fill="#EA4335"
+                      d="M24 9.5c3.54 0 5.95 1.54 7.31 2.82l5-4.82C33.26 4.46 29.03 2.5 24 2.5 14.95 2.5 7.39 7.95 4.41 15.83l5.88 4.57C11.82 14.11 17.48 9.5 24 9.5Z"
+                    />
+                    <path
+                      fill="#4285F4"
+                      d="M46.1 24.5c0-1.65-.15-2.85-.47-4.1H24v7.77h12.7c-.26 2.1-1.66 5.26-4.77 7.38l6.15 4.78c3.68-3.4 5.99-8.41 5.99-15.83Z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M10.29 28.07c-.43-1.27-.68-2.62-.68-4.07 0-1.45.25-2.8.66-4.07l-5.86-4.57C3.14 18.2 2.4 21.04 2.4 24c0 2.96.74 5.8 2.01 8.64l5.88-4.57Z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M24 45.5c5.03 0 9.26-1.66 12.34-4.5l-6.15-4.78c-1.64 1.13-3.83 1.92-6.19 1.92-6.52 0-12.18-4.61-14.06-10.9L4.06 31.8C7.04 39.67 14.95 45.5 24 45.5Z"
+                    />
+                  </svg>
+                  Sign in with Google
+                </button>
                 <Link
                   href="/sign-in?mode=sign-up"
                   className="rounded-full border border-ink/20 px-4 py-2 text-xs uppercase tracking-[0.2em] text-ink/70 transition hover:border-ink/50"
                 >
                   Sign up
                 </Link>
-                {/* <button
-                  className="btn-primary text-xs uppercase tracking-[0.2em]"
-                  onClick={handleGoogleLogin}
-                  disabled={status === "loading"}
-                >
-                  Continue with Google
-                </button> */}
               </>
             )}
           </div>
