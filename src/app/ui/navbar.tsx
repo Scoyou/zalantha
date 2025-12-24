@@ -9,6 +9,14 @@ export const Navbar = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
+  const isActive = (href: string) => pathname === href;
+  const isGetStartedActive = [
+    "/get-started",
+    "/history",
+    "/factions",
+    "/character-sheet",
+    "/backend",
+  ].includes(pathname);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -108,7 +116,9 @@ export const Navbar = () => {
         <li>
           <Link
             href="/"
-            className="transition-colors duration-300 hover:text-ember"
+            className={`nav-link transition-colors duration-300 hover:text-ember ${
+              isActive("/") ? "nav-link--active" : ""
+            }`}
           >
             Home
           </Link>
@@ -116,7 +126,9 @@ export const Navbar = () => {
         <li>
           <Link
             href="/rules"
-            className="transition-colors duration-300 hover:text-ember"
+            className={`nav-link transition-colors duration-300 hover:text-ember ${
+              isActive("/rules") ? "nav-link--active" : ""
+            }`}
           >
             Rules
           </Link>
@@ -124,7 +136,9 @@ export const Navbar = () => {
         <li>
           <Link
             href="/contact"
-            className="transition-colors duration-300 hover:text-ember"
+            className={`nav-link transition-colors duration-300 hover:text-ember ${
+              isActive("/contact") ? "nav-link--active" : ""
+            }`}
           >
             Contact
           </Link>
@@ -132,7 +146,9 @@ export const Navbar = () => {
         <li className="relative">
           <button
             type="button"
-            className="transition-colors duration-300 hover:text-ember"
+            className={`nav-link transition-colors duration-300 hover:text-ember ${
+              isGetStartedActive ? "nav-link--active" : ""
+            }`}
             onClick={toggleDropdown}
             aria-expanded={isDropdownOpen}
             aria-controls="desktop-dropdown"
@@ -231,7 +247,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isActive("/") ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Home
@@ -240,7 +258,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/rules"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isActive("/rules") ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Rules
@@ -249,7 +269,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/contact"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isActive("/contact") ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Contact
@@ -258,7 +280,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/get-started"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isGetStartedActive ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Get Started
@@ -267,7 +291,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/history"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isGetStartedActive ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 World History
@@ -276,7 +302,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/factions"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isGetStartedActive ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Factions
@@ -285,7 +313,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/character-sheet"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isGetStartedActive ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Character Sheet
@@ -294,7 +324,9 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/backend"
-                className="transition-colors duration-300 hover:text-ember"
+                className={`nav-link transition-colors duration-300 hover:text-ember ${
+                  isGetStartedActive ? "nav-link--active" : ""
+                }`}
                 onClick={closeMobileMenu}
               >
                 Saved Characters

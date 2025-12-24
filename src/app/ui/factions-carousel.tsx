@@ -128,8 +128,8 @@ export default function FactionsCarousel({ items }: { items: RaceItem[] }) {
                 onClick={() => goTo(index)}
                 aria-label={`View ${item.title}`}
                 aria-current={index === safeIndex ? "true" : "false"}
-                className={`h-1.5 w-6 rounded-full transition ${
-                  index === safeIndex ? "bg-ink/80" : "bg-ink/25"
+                className={`carousel-dot h-1.5 w-6 rounded-full transition ${
+                  index === safeIndex ? "carousel-dot--active" : ""
                 }`}
               />
             ))}
@@ -157,7 +157,7 @@ export default function FactionsCarousel({ items }: { items: RaceItem[] }) {
           </button>
         </div>
       </div>
-      <p className="mt-4 text-xs uppercase tracking-[0.25em] text-ink/60">
+      <p className="carousel-count mt-4 text-xs uppercase tracking-[0.25em]">
         Race {safeIndex + 1} of {total}
       </p>
     </div>

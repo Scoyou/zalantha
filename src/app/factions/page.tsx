@@ -1,5 +1,6 @@
 import Layout from "../ui/layout-panel";
 import FactionsCarousel from "../ui/factions-carousel";
+import Reveal from "../ui/reveal";
 
 const races = [
   {
@@ -48,15 +49,20 @@ const races = [
 
 export default function Factions() {
   return (
-    <Layout className="px-0 md:px-6" wrapperClassName="max-w-none" panelClassName="rounded-none px-0 md:rounded-[32px] md:px-12">
+    <Layout className="lore-panel px-0 md:px-6" wrapperClassName="max-w-none" panelClassName="rounded-none px-0 md:rounded-[32px] md:px-12">
       <div className="relative h-full w-full">
         <div className="relative z-10 h-full items-center text-center">
-          <div className="px-4 md:px-0">
-            <h1 className="mb-6 text-3xl text-ink">
-              Races and Factions of Zalantha
-            </h1>
-          </div>
-          <FactionsCarousel items={races} />
+          <Reveal>
+            <div className="px-4 md:px-0">
+              <h1 className="heading-sigil mb-6 text-3xl text-ink">
+                Races and Factions of Zalantha
+              </h1>
+              <div className="section-divider"></div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <FactionsCarousel items={races} />
+          </Reveal>
         </div>
       </div>
     </Layout>
