@@ -29,8 +29,7 @@ export const signInWithAuthApi = async (
   email: string,
   password: string,
 ): Promise<AuthTokens> => {
-  const baseUrl = getApiBaseUrl();
-  const response = await fetch(`${baseUrl}/login`, {
+  const response = await fetch(`/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -57,8 +56,7 @@ export const signUpWithAuthApi = async (
   password: string,
   name?: string,
 ) => {
-  const baseUrl = getApiBaseUrl();
-  const response = await fetch(`${baseUrl}/signup`, {
+  const response = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
