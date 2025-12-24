@@ -31,10 +31,9 @@ export const characterApiConfigSummary = {
 const getApiBaseUrl = () => characterApiConfig.baseUrl.replace(/\/+$/, "");
 
 export const fetchCharacters = async (): Promise<Character[]> => {
-  const baseUrl = getApiBaseUrl();
   const token = await getAuthToken();
 
-  const response = await fetch(`${baseUrl}/characters`, {
+  const response = await fetch(`/api/characters`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -51,10 +50,9 @@ export const fetchCharacters = async (): Promise<Character[]> => {
 };
 
 export const saveCharacters = async (characters: Character[]) => {
-  const baseUrl = getApiBaseUrl();
   const token = await getAuthToken();
 
-  const response = await fetch(`${baseUrl}/characters`, {
+  const response = await fetch(`/api/characters`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`,
