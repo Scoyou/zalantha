@@ -23,7 +23,7 @@ export default function Home() {
     <main>
       <section className="relative">
         <Header />
-        <div className="relative z-20 mt-6 px-4 pb-16 md:mt-10 md:px-6">
+        <div id="home-sections" className="relative z-20 mt-6 px-4 pb-16 md:mt-10 md:px-6">
           <div className="surface-panel ornate-frame mx-auto w-full max-w-6xl rounded-2xl px-4 py-8 md:rounded-[36px] md:px-10 md:py-10">
             <div className="grid gap-6 md:grid-cols-3">
               <div className="animate-rise-in" style={{ animationDelay: "0.05s" }}>

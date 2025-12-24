@@ -1,5 +1,4 @@
 import Layout from "../ui/layout-panel";
-import { BackgroundImage } from "../ui/background-image";
 import FactionsCarousel from "../ui/factions-carousel";
 
 const races = [
@@ -49,18 +48,14 @@ const races = [
 
 export default function Factions() {
   return (
-    <Layout>
-      <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[32px]">
-        <BackgroundImage
-          altText="Background - a pencil stlye drawing of a medieval battle"
-          imageSrc={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/battle_background.webp`}
-          variant="panel"
-          className="rounded-2xl md:rounded-[32px]"
-        />
+    <Layout className="px-0 md:px-6" wrapperClassName="max-w-none" panelClassName="rounded-none px-0 md:rounded-[32px] md:px-12">
+      <div className="relative h-full w-full">
         <div className="relative z-10 h-full items-center text-center">
-          <h1 className="mb-6 text-3xl text-ink">
-            Races and Factions of Zalantha
-          </h1>
+          <div className="px-4 md:px-0">
+            <h1 className="mb-6 text-3xl text-ink">
+              Races and Factions of Zalantha
+            </h1>
+          </div>
           <FactionsCarousel items={races} />
         </div>
       </div>

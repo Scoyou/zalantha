@@ -66,7 +66,7 @@ export default function FactionsCarousel({ items }: { items: RaceItem[] }) {
   const dragPercent = (dragOffset / widthRef.current) * 100;
 
   return (
-    <div className="mt-8 w-full md:mx-auto md:max-w-5xl">
+    <div className="mt-8 w-full">
       <div className="overflow-hidden">
         <div
           ref={trackRef}
@@ -84,7 +84,7 @@ export default function FactionsCarousel({ items }: { items: RaceItem[] }) {
           onPointerCancel={handlePointerUp}
         >
           {items.map((item, index) => (
-            <div key={item.title} className="min-w-full px-0 sm:px-2">
+            <div key={item.title} className="min-w-full px-0 md:px-4">
               <RaceCard
                 imageUrl={item.imageUrl}
                 altText={item.altText}
@@ -97,41 +97,67 @@ export default function FactionsCarousel({ items }: { items: RaceItem[] }) {
         </div>
       </div>
 
-      <div className="mt-5 flex flex-col items-center justify-between gap-3 text-ink md:flex-row">
-        <button
-          type="button"
-          className="btn-primary text-xs uppercase tracking-[0.2em]"
-          onClick={() => goTo(safeIndex - 1)}
-          aria-label="View previous faction"
-        >
-          Prev
-        </button>
+      <div className="mt-6 flex flex-col items-center gap-4 text-ink">
+        <div className="flex w-full max-w-[22rem] items-center gap-3 md:max-w-none md:gap-4">
+          <button
+            type="button"
+            className="shrink-0 rounded-full border border-transparent bg-transparent px-2 py-2 text-ink/80 transition hover:-translate-y-0.5 hover:text-ink md:px-3"
+            onClick={() => goTo(safeIndex - 1)}
+            aria-label="View previous faction"
+          >
+            <span className="sr-only">Prev</span>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-4 w-4 text-ink/80"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
 
-        <div className="flex items-center gap-2">
-          {items.map((item, index) => (
-            <button
-              key={item.title}
-              type="button"
-              onClick={() => goTo(index)}
-              aria-label={`View ${item.title}`}
-              aria-current={index === safeIndex ? "true" : "false"}
-              className={`h-2.5 w-2.5 rounded-full border border-ink/60 transition ${
-                index === safeIndex ? "bg-ink/80" : "bg-transparent"
-              }`}
-            />
-          ))}
+          <div className="flex flex-1 items-center justify-center gap-2">
+            {items.map((item, index) => (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => goTo(index)}
+                aria-label={`View ${item.title}`}
+                aria-current={index === safeIndex ? "true" : "false"}
+                className={`h-1.5 w-6 rounded-full transition ${
+                  index === safeIndex ? "bg-ink/80" : "bg-ink/25"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className="shrink-0 rounded-full border border-transparent bg-transparent px-2 py-2 text-ink/80 transition hover:-translate-y-0.5 hover:text-ink md:px-3"
+            onClick={() => goTo(safeIndex + 1)}
+            aria-label="View next faction"
+          >
+            <span className="sr-only">Next</span>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-4 w-4 text-ink/80"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="btn-primary text-xs uppercase tracking-[0.2em]"
-          onClick={() => goTo(safeIndex + 1)}
-          aria-label="View next faction"
-        >
-          Next
-        </button>
       </div>
-      <p className="mt-3 text-xs uppercase tracking-[0.25em] text-ink/70">
+      <p className="mt-4 text-xs uppercase tracking-[0.25em] text-ink/60">
         Race {safeIndex + 1} of {total}
       </p>
     </div>
