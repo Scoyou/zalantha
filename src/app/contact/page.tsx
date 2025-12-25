@@ -105,7 +105,7 @@ export default function Contact() {
               htmlFor="fromEmail"
               className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-mist"
             >
-              Raven Address
+              Email Address
             </label>
             <input
               type="email"

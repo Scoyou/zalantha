@@ -327,7 +327,7 @@ function SignInContent() {
                     type="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    placeholder="you@zalantha.org"
+                    placeholder="email@gmail.com"
                     required
                   />
                 </label>
