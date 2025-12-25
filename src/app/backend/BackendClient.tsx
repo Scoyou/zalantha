@@ -52,6 +52,9 @@ const writeCharacters = (userId: string, nextCharacters: Character[]) => {
   window.localStorage.setItem(storageKey, JSON.stringify(nextCharacters));
 };
 
+const classOptions = ["Fighter", "Rogue", "Mage", "Bard", "War Priest"];
+const factionOptions = ["Orcs", "Dwarves", "Elves", "Humans", "Beastfolk"];
+
 export default function BackendClient() {
   const [status, setStatus] = useState<"idle" | "loading" | "ready">("idle");
   const [userName, setUserName] = useState<string | null>(null);
@@ -211,6 +214,16 @@ export default function BackendClient() {
     setIsSaving(true);
 
     const trimmedId = newCharacter.id.trim();
+    const classValue = newCharacter.class.trim();
+    const factionValue = newCharacter.faction.trim();
+    if (
+      !classOptions.includes(classValue) ||
+      !factionOptions.includes(factionValue)
+    ) {
+      setCharacterError("Please choose a class and faction from the list.");
+      setIsSaving(false);
+      return;
+    }
     const nextCharacter: Character = {
       ...newCharacter,
       id: trimmedId || `char-${Date.now()}`,
@@ -218,8 +231,8 @@ export default function BackendClient() {
       backstory:
         newCharacter.backstory.trim() ||
         "A new recruit, ready for their first adventure.",
-      class: newCharacter.class.trim() || "Wanderer",
-      faction: newCharacter.faction.trim() || "Unaffiliated",
+      class: classValue,
+      faction: factionValue,
       lastPlayed: newCharacter.lastPlayed.trim() || "Never",
       level: Number.isFinite(newCharacter.level)
         ? Math.max(1, Math.floor(newCharacter.level))
@@ -297,14 +310,24 @@ export default function BackendClient() {
     setCharacterError(null);
     setIsSaving(true);
 
+    const classValue = editDraft.class.trim();
+    const factionValue = editDraft.faction.trim();
+    if (
+      !classOptions.includes(classValue) ||
+      !factionOptions.includes(factionValue)
+    ) {
+      setCharacterError("Please choose a class and faction from the list.");
+      setIsSaving(false);
+      return;
+    }
     const nextCharacter: Character = {
       ...editDraft,
       name: editDraft.name.trim() || "Untitled Adventurer",
       backstory:
         editDraft.backstory.trim() ||
         "A new recruit, ready for their first adventure.",
-      class: editDraft.class.trim() || "Wanderer",
-      faction: editDraft.faction.trim() || "Unaffiliated",
+      class: classValue,
+      faction: factionValue,
       lastPlayed: editDraft.lastPlayed.trim() || "Never",
       level: Number.isFinite(editDraft.level)
         ? Math.max(1, Math.floor(editDraft.level))
@@ -511,14 +534,20 @@ export default function BackendClient() {
                 </label>
                 <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                   Class
-                  <input
+                  <select
                     className="mt-2 rounded-xl border border-ink/10 bg-parchment/80 px-3 py-2 text-sm text-ink"
                     value={newCharacter.class}
                     onChange={(event) =>
                       handleNewCharacterChange("class", event.target.value)
                     }
-                    placeholder="Warden"
-                  />
+                  >
+                    <option value="">Select a class</option>
+                    {classOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 </label>
                 <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                   Level
@@ -537,14 +566,20 @@ export default function BackendClient() {
                 </label>
                 <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                   Faction
-                  <input
+                  <select
                     className="mt-2 rounded-xl border border-ink/10 bg-parchment/80 px-3 py-2 text-sm text-ink"
                     value={newCharacter.faction}
                     onChange={(event) =>
                       handleNewCharacterChange("faction", event.target.value)
                     }
-                    placeholder="The Silver Bastion"
-                  />
+                  >
+                    <option value="">Select a faction</option>
+                    {factionOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 </label>
                 <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                   Last Played
@@ -643,14 +678,21 @@ export default function BackendClient() {
                           />
                         </label>
                         <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
-                          Calling
-                          <input
+                          Class
+                          <select
                             className="mt-2 rounded-xl border border-ink/10 bg-parchment/80 px-3 py-2 text-sm text-ink"
                             value={editDraft.class}
                             onChange={(event) =>
                               handleEditChange("class", event.target.value)
                             }
-                          />
+                          >
+                            <option value="">Select a class</option>
+                            {classOptions.map((option) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))}
+                          </select>
                         </label>
                         <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                           Level
@@ -669,13 +711,20 @@ export default function BackendClient() {
                         </label>
                         <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                           Faction
-                          <input
+                          <select
                             className="mt-2 rounded-xl border border-ink/10 bg-parchment/80 px-3 py-2 text-sm text-ink"
                             value={editDraft.faction}
                             onChange={(event) =>
                               handleEditChange("faction", event.target.value)
                             }
-                          />
+                          >
+                            <option value="">Select a faction</option>
+                            {factionOptions.map((option) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))}
+                          </select>
                         </label>
                         <label className="flex flex-col text-xs uppercase tracking-[0.2em] text-ink/60">
                           Last Played
