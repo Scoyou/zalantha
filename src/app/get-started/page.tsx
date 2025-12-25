@@ -106,10 +106,10 @@ export default function GetStarted() {
         <Reveal delay={0.35}>
           <div>
             <p className="mt-2">
-              <strong>Orks:</strong> These big brutes are the most barbaric of the
-              factions. War is what they crave. Orks are always looking for a good
-              fight. Players portraying Orks will paint themselves green and will
-              usually have tusks. Orks love to wear war paint, so have fun and get
+              <strong>Orcs:</strong> These big brutes are the most barbaric of the
+              factions. War is what they crave. Orcs are always looking for a good
+              fight. Players portraying Orcs will paint themselves green and will
+              usually have tusks. Orcs love to wear war paint, so have fun and get
               creative with it.
             </p>
             <p className="mt-2">

@@ -6,9 +6,9 @@ const races = [
   {
     imageUrl: `${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/ork_thumbnail.webp`,
     altText: "A growling ork",
-    title: "Orks",
+    title: "Orcs",
     content:
-      "Orks inhabit desert regions, living in tents made from the hides of animals. They are a warring faction, always in search of the next great battle. They worship the Red Sun and believe that, depending on their kill count at death, they will ascend to the highest heavens, where they will fight great beasts for all eternity.",
+      "Orcs inhabit desert regions, living in tents made from the hides of animals. They are a warring faction, always in search of the next great battle. They worship the Red Sun and believe that, depending on their kill count at death, they will ascend to the highest heavens, where they will fight great beasts for all eternity.",
   },
   {
     imageUrl: `${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/dwarf_thumbnail.webp`,
