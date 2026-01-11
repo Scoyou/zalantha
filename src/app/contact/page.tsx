@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, FormEvent } from "react";
+import Script from "next/script";
 import Layout from "../ui/layout-panel";
 import emailjs from "@emailjs/browser";
 import { ContactModal } from "../ui/contact-modal";
@@ -10,8 +11,18 @@ interface FormData {
   message: string;
 }
 
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
+  const recaptchaTokenRef = useRef<HTMLInputElement>(null);
 
   const initialFormData: FormData = {
     fromName: "",
@@ -21,6 +32,8 @@ export default function Contact() {
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -29,8 +42,29 @@ export default function Contact() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const sendEmail = (e: FormEvent) => {
+  const getRecaptchaToken = async () => {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!siteKey || !window.grecaptcha) {
+      return "";
+    }
+
+    return new Promise<string>((resolve, reject) => {
+      window.grecaptcha?.ready(async () => {
+        try {
+          const token = await window.grecaptcha?.execute(siteKey, {
+            action: "contact",
+          });
+          resolve(token ?? "");
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+  };
+
+  const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (
       form.current &&
@@ -38,25 +72,36 @@ export default function Contact() {
       process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID &&
       process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
     ) {
-      emailjs
-        .sendForm(
+      setIsSubmitting(true);
+      try {
+        const token = await getRecaptchaToken();
+        if (!token) {
+          setSubmitError("reCAPTCHA failed to load. Please refresh and try again.");
+          return;
+        }
+        if (recaptchaTokenRef.current) {
+          recaptchaTokenRef.current.value = token;
+        }
+        await emailjs.sendForm(
           process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
           form.current,
           {
             publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
           },
-        )
-        .then(
-          () => {
-            console.log("SUCCESS!");
-            setShowModal(true);
-            setFormData(initialFormData);
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          },
         );
+        console.log("SUCCESS!");
+        setShowModal(true);
+        setFormData(initialFormData);
+        if (recaptchaTokenRef.current) {
+          recaptchaTokenRef.current.value = "";
+        }
+      } catch (error) {
+        console.log("FAILED...", error);
+        setSubmitError("Something went wrong sending your message. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -66,6 +111,12 @@ export default function Contact() {
 
   return (
     <Layout variant="dark" className="themed-panel lore-panel">
+      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? (
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+      ) : null}
       <Reveal>
         <div className="items-center text-center">
           <h1 className="heading-sigil text-3xl text-mist">Contact Us</h1>
@@ -81,6 +132,7 @@ export default function Contact() {
 
       <Reveal delay={0.1}>
         <form ref={form} onSubmit={sendEmail} className="mx-auto w-full md:max-w-md">
+          <input ref={recaptchaTokenRef} type="hidden" name="recaptchaToken" />
           <div className="mb-4">
             <label
               htmlFor="fromName"
@@ -137,12 +189,18 @@ export default function Contact() {
             ></textarea>
           </div>
 
+          {submitError ? (
+            <p className="mb-4 text-center text-xs uppercase tracking-[0.2em] text-amber-200">
+              {submitError}
+            </p>
+          ) : null}
           <div className="text-center">
             <button
               type="submit"
               className="btn-primary btn-primary--shimmer text-xs uppercase tracking-[0.3em]"
+              disabled={isSubmitting}
             >
-              Send via Raven
+              {isSubmitting ? "Summoning Raven..." : "Send via Raven"}
             </button>
           </div>
         </form>
