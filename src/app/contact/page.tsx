@@ -34,6 +34,7 @@ export default function Contact() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -65,6 +66,14 @@ export default function Contact() {
   const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitError(null);
+    setEmailError(null);
+
+    const trimmedEmail = formData.fromEmail.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
+    if (!emailOk) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
 
     if (
       form.current &&
@@ -166,6 +175,7 @@ export default function Contact() {
               value={formData.fromEmail}
               onChange={handleChange}
               autoComplete="email"
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               className="w-full rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm text-ink shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40"
               required
             />
@@ -189,8 +199,13 @@ export default function Contact() {
             ></textarea>
           </div>
 
+          {emailError ? (
+            <p className="mb-2 text-center text-xs uppercase tracking-[0.2em] text-amber-200">
+              {emailError}
+            </p>
+          ) : null}
           {submitError ? (
-            <p className="mb-4 text-center text-xs uppercase tracking-[0.2em] text-amber-200">
+            <p className="mb-4 text-center text-xs uppercase tracking-[0.2em] text-red-400">
               {submitError}
             </p>
           ) : null}
