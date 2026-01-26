@@ -21,10 +21,21 @@ export async function POST(request: Request) {
   });
 
   const body = await response.text();
+  const headers = new Headers({
+    "Content-Type": response.headers.get("content-type") ?? "application/json",
+  });
+  const setCookies =
+    typeof response.headers.getSetCookie === "function"
+      ? response.headers.getSetCookie()
+      : response.headers.get("set-cookie")
+        ? [response.headers.get("set-cookie") ?? ""]
+        : [];
+  setCookies.filter(Boolean).forEach((cookie) => {
+    headers.append("Set-Cookie", cookie);
+  });
+
   return new Response(body, {
     status: response.status,
-    headers: {
-      "Content-Type": response.headers.get("content-type") ?? "application/json",
-    },
+    headers,
   });
 }

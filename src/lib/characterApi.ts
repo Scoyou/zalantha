@@ -1,5 +1,3 @@
-import { getAuthToken } from "@/lib/authSession";
-
 export type Character = {
   id: string;
   name: string;
@@ -31,12 +29,8 @@ export const characterApiConfigSummary = {
 const getApiBaseUrl = () => characterApiConfig.baseUrl.replace(/\/+$/, "");
 
 export const fetchCharacters = async (): Promise<Character[]> => {
-  const token = await getAuthToken();
-
   const response = await fetch(`/api/characters`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    credentials: "same-origin",
   });
 
   if (!response.ok) {
@@ -50,14 +44,12 @@ export const fetchCharacters = async (): Promise<Character[]> => {
 };
 
 export const saveCharacters = async (characters: Character[]) => {
-  const token = await getAuthToken();
-
   const response = await fetch(`/api/characters`, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
+    credentials: "same-origin",
     body: JSON.stringify({ items: characters }),
   });
 

@@ -1,7 +1,5 @@
-type AuthTokens = {
-  idToken: string;
-  accessToken?: string;
-  refreshToken?: string;
+type AuthLoginResponse = {
+  ok?: boolean;
   expiresAt?: number;
 };
 
@@ -28,7 +26,7 @@ const getApiBaseUrl = () => authApiConfig.baseUrl.replace(/\/+$/, "");
 export const signInWithAuthApi = async (
   email: string,
   password: string,
-): Promise<AuthTokens> => {
+): Promise<AuthLoginResponse> => {
   const response = await fetch(`/api/auth/login`, {
     method: "POST",
     headers: {
@@ -43,11 +41,7 @@ export const signInWithAuthApi = async (
     );
   }
 
-  const payload = (await response.json()) as AuthTokens;
-  if (!payload.idToken) {
-    throw new Error("Auth API did not return an id token.");
-  }
-
+  const payload = (await response.json()) as AuthLoginResponse;
   return payload;
 };
 

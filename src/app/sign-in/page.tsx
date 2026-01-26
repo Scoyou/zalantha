@@ -10,11 +10,6 @@ import {
   signInWithAuthApi,
   signUpWithAuthApi,
 } from "@/lib/authApi";
-import {
-  clearStoredTokens,
-  getLocalUser,
-  setStoredTokens,
-} from "@/lib/authSession";
 import { cognitoConfigSummary, configureAmplify } from "@/lib/cognito";
 
 function SignInContent() {
@@ -65,13 +60,6 @@ function SignInContent() {
   }, [searchParams]);
 
   useEffect(() => {
-    const localUser = getLocalUser();
-    if (localUser) {
-      setUserName(localUser.name ?? localUser.email ?? localUser.userId);
-      setStatus("ready");
-      return;
-    }
-
     if (!isConfigured) {
       setStatus("ready");
       return;
@@ -117,10 +105,8 @@ function SignInContent() {
     setNotice(null);
 
     try {
-      const tokens = await signInWithAuthApi(email, password);
-      setStoredTokens(tokens);
-      const localUser = getLocalUser();
-      setUserName(localUser?.name ?? localUser?.email ?? "Adventurer");
+      await signInWithAuthApi(email, password);
+      setUserName(email.trim() || "Adventurer");
       setEmail("");
       setPassword("");
       setNotice("Signed in successfully.");
@@ -206,7 +192,6 @@ function SignInContent() {
   };
 
   const handleSignOut = async () => {
-    clearStoredTokens();
     if (isConfigured) {
       await signOut();
     }

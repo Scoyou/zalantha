@@ -14,7 +14,6 @@ import {
   fetchCharacters,
   type Character,
 } from "@/lib/characterApi";
-import { clearStoredTokens, getLocalUser } from "@/lib/authSession";
 
 const getCharacterStorageKey = (userId: string) =>
   `zalantha.characters.${userId}`;
@@ -83,48 +82,73 @@ export default function BackendClient() {
   const missingCharacterConfig = characterApiConfigSummary.missing;
 
   useEffect(() => {
-    const localUser = getLocalUser();
-    if (localUser) {
-      setUserId(localUser.userId);
-      setUserName(localUser.name ?? localUser.email ?? localUser.userId);
-      setStatus("ready");
-      return;
-    }
-
-    if (!isConfigured) {
-      setStatus("ready");
-      return;
-    }
-
-    configureAmplify();
+    let isCancelled = false;
 
     const load = async () => {
       setStatus("loading");
       setError(null);
+      let resolvedUser = false;
       try {
-        const currentUser = await getCurrentUser();
-        setUserId(currentUser.userId ?? currentUser.username);
-        const session = await fetchAuthSession();
-        const rawDisplayName =
-          session.tokens?.idToken?.payload?.name ??
-          session.tokens?.idToken?.payload?.email ??
-          currentUser.username;
-        setUserName(String(rawDisplayName));
+        if (isConfigured) {
+          configureAmplify();
+          const currentUser = await getCurrentUser();
+          setUserId(currentUser.userId ?? currentUser.username);
+          const session = await fetchAuthSession();
+          const rawDisplayName =
+            session.tokens?.idToken?.payload?.name ??
+            session.tokens?.idToken?.payload?.email ??
+            currentUser.username;
+          setUserName(String(rawDisplayName));
+          resolvedUser = true;
+          return;
+        }
       } catch (caught) {
-        setUserId(null);
-        setUserName(null);
         if (
           caught instanceof Error &&
           !caught.message.toLowerCase().includes("authenticated")
         ) {
           setError(caught.message);
         }
-      } finally {
+      }
+
+      if (!resolvedUser) {
+        try {
+          const response = await fetch("/api/auth/me", {
+            credentials: "same-origin",
+          });
+          if (response.ok) {
+            const payload = (await response.json()) as {
+              userId: string;
+              name?: string;
+              email?: string;
+            };
+            if (!isCancelled) {
+              setUserId(payload.userId);
+              setUserName(
+                payload.name ?? payload.email ?? payload.userId ?? null,
+              );
+            }
+            resolvedUser = true;
+          }
+        } catch {
+          // Leave unresolved.
+        }
+      }
+
+      if (!resolvedUser && !isCancelled) {
+        setUserId(null);
+        setUserName(null);
+      }
+
+      if (!isCancelled) {
         setStatus("ready");
       }
     };
 
     load();
+    return () => {
+      isCancelled = true;
+    };
   }, [isConfigured]);
 
   useEffect(() => {
@@ -193,11 +217,11 @@ export default function BackendClient() {
 
   const handleLogout = async () => {
     setStatus("loading");
-    clearStoredTokens();
     if (isConfigured) {
       configureAmplify();
       await signOut();
     }
+    await fetch("/api/auth/logout", { method: "POST" });
     setUserName(null);
     setUserId(null);
     setCharacters([]);

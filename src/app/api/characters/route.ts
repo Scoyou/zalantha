@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+
 const getCharacterApiBaseUrl = () =>
   (process.env.NEXT_PUBLIC_CHARACTER_API_BASE_URL ?? "").replace(/\/+$/, "");
 
@@ -7,11 +9,13 @@ const jsonError = (message: string, status = 500) =>
     headers: { "Content-Type": "application/json" },
   });
 
+const idTokenCookieName = "__Host-zalantha_id";
+
 const forwardHeaders = (request: Request) => {
   const headers = new Headers();
-  const authHeader = request.headers.get("authorization");
-  if (authHeader) {
-    headers.set("Authorization", authHeader);
+  const token = cookies().get(idTokenCookieName)?.value;
+  if (token) {
+    headers.set("Authorization", `Bearer ${token}`);
   }
   const contentType = request.headers.get("content-type");
   if (contentType) {
