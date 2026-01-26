@@ -2,7 +2,6 @@
 import React, { useState, useRef, FormEvent } from "react";
 import Script from "next/script";
 import Layout from "../ui/layout-panel";
-import emailjs from "@emailjs/browser";
 import { ContactModal } from "../ui/contact-modal";
 import Reveal from "../ui/reveal";
 interface FormData {
@@ -75,42 +74,49 @@ export default function Contact() {
       return;
     }
 
-    if (
-      form.current &&
-      process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID &&
-      process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID &&
-      process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
-    ) {
-      setIsSubmitting(true);
-      try {
-        const token = await getRecaptchaToken();
-        if (!token) {
-          setSubmitError("reCAPTCHA failed to load. Please refresh and try again.");
-          return;
-        }
-        if (recaptchaTokenRef.current) {
-          recaptchaTokenRef.current.value = token;
-        }
-        await emailjs.sendForm(
-          process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
-          form.current,
-          {
-            publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
-          },
-        );
-        console.log("SUCCESS!");
-        setShowModal(true);
-        setFormData(initialFormData);
-        if (recaptchaTokenRef.current) {
-          recaptchaTokenRef.current.value = "";
-        }
-      } catch (error) {
-        console.log("FAILED...", error);
-        setSubmitError("Something went wrong sending your message. Please try again.");
-      } finally {
-        setIsSubmitting(false);
+    setIsSubmitting(true);
+    try {
+      const token = await getRecaptchaToken();
+      if (!token) {
+        setSubmitError("reCAPTCHA failed to load. Please refresh and try again.");
+        return;
       }
+      if (recaptchaTokenRef.current) {
+        recaptchaTokenRef.current.value = token;
+      }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fromName: formData.fromName.trim(),
+          fromEmail: trimmedEmail,
+          message: formData.message.trim(),
+          recaptchaToken: token,
+        }),
+      });
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(
+          typeof payload?.message === "string"
+            ? payload.message
+            : "Unable to send your message.",
+        );
+      }
+
+      setShowModal(true);
+      setFormData(initialFormData);
+      if (recaptchaTokenRef.current) {
+        recaptchaTokenRef.current.value = "";
+      }
+    } catch (error) {
+      console.log("FAILED...", error);
+      setSubmitError("Something went wrong sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
