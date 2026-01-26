@@ -121,7 +121,11 @@ export async function POST(request: Request) {
   );
 
   if (!emailResponse.ok) {
-    return json(502, "Unable to send email.");
+    const errorText = await emailResponse.text().catch(() => "");
+    const message = errorText
+      ? `Email service error: ${errorText}`
+      : "Unable to send email.";
+    return json(502, message);
   }
 
   return new Response(JSON.stringify({ ok: true }), {
