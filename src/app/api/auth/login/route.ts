@@ -23,18 +23,12 @@ export async function POST(request: Request) {
   const body = await response.text();
   const contentType =
     response.headers.get("content-type") ?? "application/json";
-  const headers = new Headers({
-    "Content-Type": "application/json",
-  });
   const setCookies =
     typeof response.headers.getSetCookie === "function"
       ? response.headers.getSetCookie()
       : response.headers.get("set-cookie")
         ? [response.headers.get("set-cookie") ?? ""]
         : [];
-  setCookies.filter(Boolean).forEach((cookie) => {
-    headers.append("Set-Cookie", cookie);
-  });
 
   if (!response.ok) {
     return new Response(body, {
@@ -59,6 +53,13 @@ export async function POST(request: Request) {
   } catch {
     // Ignore parse errors; cookies may already be set via headers.
   }
+
+  const headers = new Headers({
+    "Content-Type": "application/json",
+  });
+  setCookies.filter(Boolean).forEach((cookie) => {
+    headers.append("Set-Cookie", cookie);
+  });
 
   const shouldUseSecureCookies = process.env.NODE_ENV === "production";
   const buildCookie = (name: string, value: string, maxAgeSeconds: number) => {

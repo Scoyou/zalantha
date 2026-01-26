@@ -195,6 +195,7 @@ function SignInContent() {
     if (isConfigured) {
       await signOut();
     }
+    await fetch("/api/auth/logout", { method: "POST" });
     setUserName(null);
   };
 
