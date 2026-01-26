@@ -90,7 +90,7 @@ export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   const recaptcha = await verifyRecaptcha(recaptchaToken, ip);
   if (!recaptcha.ok) {
-    return json(400, recaptcha.message);
+    return json(400, recaptcha.message ?? "reCAPTCHA verification failed.");
   }
 
   const { serviceId, templateId, publicKey } = getEmailConfig();
