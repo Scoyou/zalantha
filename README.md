@@ -71,4 +71,3 @@ header.
 
 The contact form posts via EmailJS. Provide service/template/public key values
 in `.env.local`.
-t
