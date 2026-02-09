@@ -599,11 +599,13 @@ h4 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.btn-primary,
 .btn-primary--shimmer {
   position: relative;
   overflow: hidden;
 }
 
+.btn-primary::after,
 .btn-primary--shimmer::after {
   content: "";
   position: absolute;
@@ -617,6 +619,7 @@ h4 {
   transition: opacity 0.2s ease;
 }
 
+.btn-primary:hover::after,
 .btn-primary--shimmer:hover::after {
   opacity: 0.9;
   animation: sword-shimmer 0.9s ease;
@@ -945,6 +948,7 @@ select:focus-visible {
     display: none;
   }
 
+  .btn-primary::after,
   .btn-primary--shimmer::after {
     animation: none;
   }

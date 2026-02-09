@@ -1,23 +1,10 @@
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+
 const json = (status: number, message: string) =>
   new Response(JSON.stringify({ message }), {
     status,
     headers: { "Content-Type": "application/json" },
   });
-
-const getEmailConfig = () => ({
-  serviceId:
-    process.env.EMAIL_SERVICE_ID ??
-    process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID ??
-    "",
-  templateId:
-    process.env.EMAIL_TEMPLATE_ID ??
-    process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID ??
-    "",
-  publicKey:
-    process.env.EMAIL_PUBLIC_KEY ??
-    process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY ??
-    "",
-});
 
 const verifyRecaptcha = async (token: string, ip?: string | null) => {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
@@ -93,38 +80,44 @@ export async function POST(request: Request) {
     return json(400, recaptcha.message ?? "reCAPTCHA verification failed.");
   }
 
-  const { serviceId, templateId, publicKey } = getEmailConfig();
-  if (!serviceId || !templateId || !publicKey) {
+  const region = process.env.AWS_REGION || process.env.SES_REGION || "";
+  const fromAddress = process.env.CONTACT_FROM_EMAIL || "";
+  const toAddress = process.env.CONTACT_TO_EMAIL || fromAddress;
+
+  if (!region || !fromAddress || !toAddress) {
     return json(500, "Email service is not configured.");
   }
 
-  const emailPayload = {
-    service_id: serviceId,
-    template_id: templateId,
-    user_id: publicKey,
-    template_params: {
-      fromName,
-      fromEmail,
-      message,
-    },
-  };
+  const ses = new SESClient({ region });
+  const subject = "New contact form submission";
+  const textBody = `Name: ${fromName || "N/A"}\nEmail: ${fromEmail}\n\nMessage:\n${message}`;
+  const htmlBody = `
+    <p><strong>Name:</strong> ${fromName || "N/A"}</p>
+    <p><strong>Email:</strong> ${fromEmail}</p>
+    <p><strong>Message:</strong></p>
+    <pre style="font-family: inherit; white-space: pre-wrap;">${message}</pre>
+  `;
 
-  const emailResponse = await fetch(
-    "https://api.emailjs.com/api/v1.0/email/send",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailPayload),
-    },
-  );
-
-  if (!emailResponse.ok) {
-    const errorText = await emailResponse.text().catch(() => "");
-    const message = errorText
-      ? `Email service error: ${errorText}`
-      : "Unable to send email.";
+  try {
+    await ses.send(
+      new SendEmailCommand({
+        Source: fromAddress,
+        Destination: { ToAddresses: [toAddress] },
+        ReplyToAddresses: [fromEmail],
+        Message: {
+          Subject: { Data: subject, Charset: "UTF-8" },
+          Body: {
+            Text: { Data: textBody, Charset: "UTF-8" },
+            Html: { Data: htmlBody, Charset: "UTF-8" },
+          },
+        },
+      }),
+    );
+  } catch (error) {
+    const message =
+      error instanceof Error && error.message
+        ? `SES error: ${error.message}`
+        : "Unable to send email.";
     return json(502, message);
   }
 

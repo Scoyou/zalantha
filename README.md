@@ -4,7 +4,7 @@ Website for the Knights of Zalantha LARP.
 ## Overview
 - Next.js (App Router) + Tailwind CSS
 - Hosted on Vercel
-- EmailJS for contact form delivery
+- SES for contact form delivery
 - Images hosted in S3 and served via AWS CloudFront
 - Auth API for sign-in and password reset flows
 
@@ -31,9 +31,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Required:
 - `NEXT_PUBLIC_CLOUDFRONT_URL` - CloudFront base URL for images
 - `NEXT_PUBLIC_SITE_URL` - Public site URL (used for metadata)
-- `NEXT_PUBLIC_EMAIL_SERVICE_ID` - EmailJS service ID
-- `NEXT_PUBLIC_EMAIL_TEMPLATE_ID` - EmailJS template ID
-- `NEXT_PUBLIC_EMAIL_PUBLIC_KEY` - EmailJS public key
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` - reCAPTCHA v3 site key (contact form)
+- `RECAPTCHA_SECRET_KEY` - reCAPTCHA v3 secret key (contact form)
+- `AWS_REGION` - AWS region for SES (or `SES_REGION`)
+- `CONTACT_FROM_EMAIL` - Verified SES from address for contact form
+- `CONTACT_TO_EMAIL` - Destination email for contact form (defaults to from)
 - `NEXT_PUBLIC_AUTH_API_BASE_URL` - Auth API base URL (see Auth API)
 - `NEXT_PUBLIC_CHARACTER_API_BASE_URL` - Character API base URL (see Character API)
 - `NEXT_PUBLIC_COGNITO_USER_POOL_ID` - Cognito User Pool ID
@@ -67,7 +69,8 @@ Use API Gateway + Lambda + DynamoDB (or AppSync + DynamoDB) with a Cognito
 authorizer so the app can pass the Cognito id token in the `Authorization`
 header.
 
-## EmailJS
+## SES (Contact form)
 
-The contact form posts via EmailJS. Provide service/template/public key values
-in `.env.local`.
+The contact form posts to `/api/contact`, which sends via SES. Configure
+`RECAPTCHA_SECRET_KEY`, `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`, `AWS_REGION` (or
+`SES_REGION`), and `CONTACT_FROM_EMAIL`/`CONTACT_TO_EMAIL` in `.env.local`.
